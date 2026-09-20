@@ -1,6 +1,6 @@
 import { SupportPledge } from '../types';
 
-export const STORAGE_KEY_PLEDGES = 'parentshield_support_pledges_v1';
+export const STORAGE_KEY_PLEDGES = 'parentshield_support_pledges_v2';
 
 /** Community wall starts empty — only real pledges from users. No sample/fabricated entries. */
 export const INITIAL_COMMUNITY_PLEDGES: SupportPledge[] = [];
