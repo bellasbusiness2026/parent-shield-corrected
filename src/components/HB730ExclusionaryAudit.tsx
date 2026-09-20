@@ -78,7 +78,7 @@ export const HB730ExclusionaryAudit: React.FC<HB730AuditProps> = ({ onSaveToAudi
     },
     {
       id: 'written',
-      title: 'Written Form 261.307 Provided and Handed to Parent',
+      title: 'Required Written Notice Under § 261.307 Provided and Handed to Parent',
       statute: 'TFC § 261.307(a)',
       value: writtenFormProvided,
       setter: setWrittenFormProvided,
@@ -99,7 +99,7 @@ export const HB730ExclusionaryAudit: React.FC<HB730AuditProps> = ({ onSaveToAudi
     },
     {
       id: 'entry',
-      title: 'Explicitly Advised of Absolute Right to Refuse Entry Into Private Residence',
+      title: 'Explicitly Advised of Right to Refuse Entry Without a Court Order',
       statute: 'TFC § 261.307(a)(3) & § 261.303',
       value: advisedOfRightToRefuseEntry,
       setter: setAdvisedOfRightToRefuseEntry,
@@ -132,7 +132,7 @@ export const HB730ExclusionaryAudit: React.FC<HB730AuditProps> = ({ onSaveToAudi
         </div>
         <p className="text-xs sm:text-sm text-slate-400 max-w-3xl leading-relaxed">
           Effective September 1, 2023 under Texas House Bill 730, DFPS investigators <strong className="text-white">MUST</strong> deliver both verbal and written notice of rights upon initial contact before conducting any interview or inspection. 
-          If the investigator failed to deliver these disclosures, Texas law triggers an <span className="text-amber-400 font-semibold">evidentiary exclusionary bar</span> prohibiting DFPS from using statements or evidence gathered in violation.
+          If required verbal and written notices are missing, information obtained (and derivative information) <span className="text-amber-400 font-semibold">may be inadmissible in civil proceedings</span>. This is not a universal criminal bar or automatic case dismissal.
         </p>
       </div>
 
