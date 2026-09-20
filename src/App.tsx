@@ -41,12 +41,12 @@ export default function App() {
         timestamp: new Date().toISOString(),
         interactionType: 'In-Person Door Visit',
         caseworkerName: 'Investigator S. Hernandez',
-        badgeOrUnit: 'Texas DFPS Region 6',
+        badgeOrUnit: '[SAMPLE] Texas DFPS Region 6',
         wasRecorded: true,
         courtOrderPresented: false,
-        summaryOfDemands: 'Unannounced door visit regarding anonymous referral. Worker requested entry to view child bedrooms and take urinalysis screening. Parent asserted 4th Amendment and TFC § 261.303 refusal absent court order.',
+        summaryOfDemands: '[SAMPLE / DEMO] Unannounced door visit regarding anonymous referral. Worker requested entry to view child bedrooms and take urinalysis screening. Parent asserted 4th Amendment and TFC § 261.303 refusal absent court order.',
         confirmationSent: true,
-        notes: 'Worker departed after parent requested all inquiries in writing. Follow-up confirmation email sent within 15 minutes.',
+        notes: '[SAMPLE / DEMO — Region 6 illustration only] Worker departed after parent requested all inquiries in writing. Follow-up confirmation email sent within 15 minutes.',
       },
     ];
   });
@@ -85,7 +85,7 @@ export default function App() {
 
   const handleAddAuditEntry = (entry: AuditLogEntry) => {
     setEntries(prev => [entry, ...prev]);
-    showToast('Interaction saved to Unshakeable Audit Trail!');
+    showToast('Interaction saved to Durable Audit Trail!');
   };
 
   const handleDeleteAuditEntry = (id: string) => {
@@ -198,7 +198,7 @@ export default function App() {
                 <span>Support the Fight to Keep Families Together</span>
               </div>
               <p className="text-slate-300 text-xs max-w-2xl">
-                ParentShield is 100% free for parents in crisis. Help us equip every parent with the constitutional knowledge and statutory tools to stop wrongful CPS interventions.
+                ParentShield is free for parents in crisis. Help us equip every parent with tools to navigate DFPS contact and assert their rights.
               </p>
             </div>
             <button
@@ -227,7 +227,7 @@ export default function App() {
 
             <div className="max-w-xl bg-slate-950 border border-slate-800 rounded-md p-2.5 text-[11px] text-slate-300">
               <span className="font-semibold text-amber-400">Legal Disclaimer: </span>
-              I provide legal information, documentation, and communication drafting, but this is not formal legal counsel; consult a licensed family law attorney for active litigation.
+              ParentShield is a parental-support tool that provides legal information, documentation, and communication drafting—not formal legal counsel or representation. Outcomes depend on your facts and court orders. Consult a licensed Texas family law attorney for active litigation or court deadlines.
             </div>
           </div>
         </div>
