@@ -23,7 +23,7 @@ export const CaseReviewer: React.FC<CaseReviewerProps> = ({ onSaveDraftToAuditLo
       sit: "A caseworker knocked on my door saying an anonymous referral was made regarding dirty dishes and lack of food. They demand to inspect my entire house, look inside my refrigerator, and make me do an instant urine drug test.",
       demands: "1. Immediate entry to inspect bedrooms and pantry.\n2. Instant 5-panel drug test.\n3. Interview my 6-year-old child alone in the bedroom.",
       order: false,
-      initial: "They showed an agency ID badge but gave me no written paperwork or Form 261.307 rights notice.",
+      initial: "They showed an agency ID badge but gave me no written paperwork or required written notice under § 261.307.",
     },
     {
       title: "Coerced 'Safety Plan' (PCSP) / Threat of Immediate Removal",
@@ -170,7 +170,7 @@ export const CaseReviewer: React.FC<CaseReviewerProps> = ({ onSaveDraftToAuditLo
             </label>
             <input
               type="text"
-              placeholder="e.g., First contact on porch; worker refused to provide written Form 261.307 disclosures"
+              placeholder="e.g., First contact on porch; worker refused to provide required written notice under § 261.307"
               value={initialContactDetails}
               onChange={(e) => setInitialContactDetails(e.target.value)}
               className="w-full bg-slate-950 border border-slate-700 rounded-lg px-3 py-2 text-xs sm:text-sm text-white placeholder-slate-500 focus:outline-none focus:border-amber-500"
@@ -206,7 +206,7 @@ export const CaseReviewer: React.FC<CaseReviewerProps> = ({ onSaveDraftToAuditLo
             ) : (
               <>
                 <Sparkles className="w-4 h-4" />
-                <span>Execute Uncompromising Case Review</span>
+                <span>Execute Case Review</span>
               </>
             )}
           </button>

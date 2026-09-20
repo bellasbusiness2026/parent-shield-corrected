@@ -29,14 +29,14 @@ TO THE INVESTIGATOR OR LAW ENFORCEMENT OFFICER PRESENT:
 PLEASE BE FORMALLY ADVISED THAT I AM ASSERTING ALL PROCEDURAL DUE PROCESS, STATUTORY, AND CONSTITUTIONAL RIGHTS UNDER TEXAS AND FEDERAL LAW.
 
 1. REFUSAL OF WARRANTLESS RESIDENTIAL ENTRY (TEXAS FAMILY CODE § 261.303 & U.S. CONST. AMEND. IV)
-I hereby decline to consent to any warrantless entry, inspection, search, or photography of my private residence, child living quarters, or personal premises. Under Texas Family Code § 261.303 and the Fourth Amendment, DFPS has NO authority to cross the threshold of this home absent a valid, signed search warrant or "Order in Aid of Investigation" executed by a judge of a court of competent jurisdiction. Administrative refusal does not constitute exigent circumstances or presumptive neglect.
+I hereby decline to consent to any warrantless entry, inspection, search, or photography of my private residence, child living quarters, or personal premises. Under Texas Family Code § 261.303 and the Fourth Amendment, as a general rule DFPS does not have authority to cross the threshold of this home absent a valid, signed search warrant, "Order in Aid of Investigation," consent, or other recognized lawful authority (e.g., exigent circumstances). Administrative refusal alone does not constitute exigent circumstances or presumptive neglect.
 
 2. MANDATORY STATUTORY DISCLOSURES & EXCLUSIONARY BAR (TEXAS FAMILY CODE § 261.307 - HB 730)
-Effective September 1, 2023 under Texas House Bill 730, DFPS investigators are STATUTORILY MANDATED to deliver both verbal and written Form 261.307 notices upon initial contact advising me of: (1) my right to legal counsel, (2) my right to audio/video record, (3) my right to refuse entry, (4) my right to refuse drug testing, and (5) my right to withhold private records.
-FAILURE TO DELIVER THESE STATUTORY DISCLOSURES PROHIBITS DFPS FROM USING ANY ADMISSIONS, STATEMENTS, OR DERIVATIVE EVIDENCE AGAINST ME UNDER TEXAS EVIDENTIARY EXCLUSIONARY PRINCIPLES.
+Effective September 1, 2023 under Texas House Bill 730, DFPS investigators are generally required to deliver both verbal and required written notice under § 261.307 upon initial contact advising me of: (1) my right to legal counsel, (2) my right to audio/video record, (3) my right to refuse entry, (4) my right to refuse drug testing, and (5) my right to withhold private records.
+IF REQUIRED VERBAL AND WRITTEN NOTICES UNDER § 261.307 ARE MISSING, INFORMATION OBTAINED (AND DERIVATIVE INFORMATION) MAY BE INADMISSIBLE IN CIVIL PROCEEDINGS. THIS IS NOT A UNIVERSAL CRIMINAL BAR OR AUTOMATIC CASE DISMISSAL.
 
 3. NOTICE OF AUDIO AND VIDEO RECORDING (TFC § 261.307(a)(2) & TEX. PENAL CODE § 16.02)
-Notice is hereby given that any and all verbal communications, doorway encounters, telephone discussions, and in-person interviews are or will be audio and/or video recorded. This is a protected statutory right under Texas Family Code § 261.307(a)(2) and lawful under Texas one-party consent recording statutes.
+Notice is hereby given that any and all verbal communications, doorway encounters, telephone discussions, and in-person interviews are or will be audio and/or video recorded. In Texas, if you are part of a conversation, Penal Code § 16.02 generally lets you record it without the other person’s consent (one-party consent). For DFPS contact, Family Code § 261.307 also addresses the right to record interactions or interviews, and a recording may later be disclosed under a court order. Extra rules can apply to alleged-perpetrator interviews (§ 261.3027), including limits on posting identifying recordings online. This is general information, not legal advice—ask a Texas attorney about your situation.
 
 4. REFUSAL OF VOLUNTARY DRUG SCREENING & PSYCHOLOGICAL TESTING (TFC § 261.307(a)(4))
 I decline to submit to any voluntary urinalysis, hair-follicle testing, saliva swab, blood screening, or psychological/psychiatric evaluation absent a certified court order signed by a judge upon a verified showing of probable cause.
@@ -52,7 +52,7 @@ Date of Contact: ___________________  Time: ___________________  County: _______
 Was a Signed Judicial Court Order Presented?   [  ] YES (Certified Copy Attached)   [  ] NO (Voluntary Request)
 Investigator Signature: ____________________________________________________________________
 
-DISCLAIMER: This document provides legal information and formal assertion of statutory rights under Texas law. Consult a licensed Texas family law attorney for active litigation.`;
+DISCLAIMER: ParentShield is a parental-support tool that provides legal information, documentation, and communication drafting—not formal legal counsel or representation. Outcomes depend on your facts and court orders. Consult a licensed Texas family law attorney for active litigation or court deadlines.`;
   };
 
   const handleCopy = () => {
@@ -217,7 +217,7 @@ DISCLAIMER: This document provides legal information and formal assertion of sta
                 <span className="text-[11px] font-mono font-bold text-slate-700">TFC § 261.303 & U.S. CONST. AMEND. IV</span>
               </h2>
               <p className="text-slate-800 text-xs mt-0.5 leading-normal">
-                Consent to enter, search, or photograph this private residence, living quarters, food pantries, or bedrooms is <strong>DENIED</strong>. Under <strong>Texas Family Code § 261.303</strong>, the Department has <strong>NO lawful authority</strong> to enter this home without: (a) voluntary informed consent, or (b) a signed <strong>"Order in Aid of Investigation"</strong> or search warrant executed by a Texas state district court judge. Exercising this constitutional and statutory right does <em>not</em> establish probable cause or exigent circumstances.
+                Consent to enter, search, or photograph this private residence, living quarters, food pantries, or bedrooms is <strong>DENIED</strong>. Under <strong>Texas Family Code § 261.303</strong>, as a general rule the Department lacks lawful authority to enter this home without: (a) voluntary informed consent, (b) a signed <strong>"Order in Aid of Investigation"</strong> or search warrant executed by a Texas state district court judge, or (c) other recognized lawful authority (e.g., exigency). Exercising this constitutional and statutory right does <em>not</em> by itself establish probable cause or exigent circumstances.
               </p>
             </div>
 
@@ -228,9 +228,9 @@ DISCLAIMER: This document provides legal information and formal assertion of sta
                 <span className="text-[11px] font-mono font-bold text-slate-700">TFC § 261.307 (HB 730)</span>
               </h2>
               <p className="text-slate-800 text-xs mt-0.5 leading-normal">
-                Under <strong>Texas House Bill 730 (effective Sept. 1, 2023)</strong>, DFPS investigators are <strong>mandated by law</strong> to deliver both <strong>verbal</strong> and <strong>written Form 261.307 disclosures</strong> upon initial contact, advising parents of: (1) the right to legal counsel, (2) the right to record, (3) the right to refuse entry, (4) the right to refuse drug testing, and (5) the right to withhold records. 
+                Under <strong>Texas House Bill 730 (effective Sept. 1, 2023)</strong>, DFPS investigators are generally required to deliver both <strong>verbal</strong> and <strong>required written notice under § 261.307</strong> upon initial contact, advising parents of: (1) the right to legal counsel, (2) the right to record, (3) the right to refuse entry, (4) the right to refuse drug testing, and (5) the right to withhold records. 
                 <span className="font-bold text-rose-900 ml-1">
-                  Failure to fully deliver these mandatory disclosures triggers an exclusionary evidentiary bar prohibiting the Department from utilizing statements, admissions, or evidence obtained in violation.
+                  If required verbal and written notices are missing, information obtained (and derivative information) may be inadmissible in civil proceedings—not a universal criminal bar or automatic case dismissal.
                 </span>
               </p>
             </div>
@@ -242,7 +242,7 @@ DISCLAIMER: This document provides legal information and formal assertion of sta
                 <span className="text-[11px] font-mono font-bold text-slate-700">TFC § 261.307(a)(2) & TPC § 16.02</span>
               </h2>
               <p className="text-slate-800 text-xs mt-0.5 leading-normal">
-                Take formal notice that <strong>all verbal communications, doorway encounters, telephone discussions, and in-person interviews are or will be audio and/or video recorded</strong>. This is an explicit statutory right codified under <strong>TFC § 261.307(a)(2)</strong> and lawful under the Texas one-party consent statute (Tex. Penal Code § 16.02).
+                Take formal notice that <strong>all verbal communications, doorway encounters, telephone discussions, and in-person interviews are or will be audio and/or video recorded</strong>. In Texas, if you are part of a conversation, Penal Code § 16.02 generally lets you record it without the other person’s consent (one-party consent). For DFPS contact, Family Code § 261.307 also addresses the right to record interactions or interviews, and a recording may later be disclosed under a court order. Extra rules can apply to alleged-perpetrator interviews (§ 261.3027), including limits on posting identifying recordings online. This is general information, not legal advice—ask a Texas attorney about your situation.
               </p>
             </div>
 
@@ -321,7 +321,7 @@ DISCLAIMER: This document provides legal information and formal assertion of sta
 
           {/* Legal Disclaimer Footer */}
           <div className="text-[10px] text-slate-600 font-sans text-center pt-1 border-t border-slate-300">
-            Legal Disclaimer: I provide legal information, documentation, and communication drafting, but this is not formal legal counsel; consult a licensed family law attorney for active litigation.
+            Legal Disclaimer: ParentShield is a parental-support tool that provides legal information, documentation, and communication drafting—not formal legal counsel or representation. Outcomes depend on your facts and court orders. Consult a licensed Texas family law attorney for active litigation or court deadlines.
           </div>
         </div>
       </div>

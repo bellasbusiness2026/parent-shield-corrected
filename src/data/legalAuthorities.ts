@@ -13,7 +13,7 @@ export const LEGAL_AUTHORITIES: LegalAuthorityInfo[] = [
     code: "U.S. Const. Amend. XIV",
     title: "Fourteenth Amendment - Substantive & Procedural Due Process",
     category: "Constitutional",
-    summary: "Guarantees fundamental liberty interests in the care, custody, and management of children. Protects against arbitrary state interference and coerced agreements.",
+    summary: "Protects fundamental liberty interests in the care, custody, and management of children. Guards against arbitrary state interference and coerced agreements under due process principles.",
     protection: "The state cannot arbitrarily demand access to your children, compel medical examinations, or alter custody arrangements without procedural due process.",
     keyQuote: "Nor shall any State deprive any person of life, liberty, or property, without due process of law."
   },
@@ -38,7 +38,7 @@ export const LEGAL_AUTHORITIES: LegalAuthorityInfo[] = [
     title: "Mandatory Information Disclosed at Initial Contact & Exclusionary Bar",
     category: "Texas Family Code",
     summary: "At first contact, DFPS caseworkers are legally required under HB 730 to provide BOTH verbal and written notice of parental rights: right to legal counsel, right to record audio/video of all interviews, right to refuse entry, right to withhold child/records, and right to refuse drug testing.",
-    protection: "CRITICAL SANCTION: Failure of the caseworker to deliver these mandatory statutory disclosures triggers an evidentiary exclusionary bar, preventing the State from admitting evidence procured in violation of § 261.307.",
+    protection: "If required verbal and written notices under TFC § 261.307 are missing, information obtained (and derivative information) may be inadmissible in civil proceedings. This is not a universal criminal bar or automatic case dismissal.",
     keyQuote: "Before conducting an interview of a person alleged to have abused or neglected a child or a parent... the department shall provide verbal and written notice of rights..."
   },
   {
@@ -46,23 +46,23 @@ export const LEGAL_AUTHORITIES: LegalAuthorityInfo[] = [
     title: "Interference with Investigation & Lawful Refusal of Entry",
     category: "Texas Family Code",
     summary: "Refusal to permit a caseworker to enter the home or interview a child is an explicit lawful right. The Department may NOT force entry; its only legal recourse is petitioning a district court for an 'Order in Aid of Investigation' supported by probable cause.",
-    protection: "You cannot be arrested, cited, or summarily charged for saying 'No' to warrantless home entry. DFPS must file a formal application before a judge to overcome your refusal.",
+    protection: "Refusing entry without a court order is generally protected under TFC § 261.303; outcomes are fact-specific and exceptions (e.g., warrant, exigency) can apply. DFPS may petition a court for an Order in Aid of Investigation.",
     keyQuote: "If admission to the home... is refused, the department may petition the court for an order in aid of an investigation."
   },
   {
     code: "Texas Family Code § 262.201",
     title: "Mandatory 14-Day Adversary Hearing Post-Removal",
     category: "Texas Family Code",
-    summary: "If DFPS removes a child under emergency circumstances without a prior hearing, a full adversary hearing MUST be held within 14 days of removal. The court must return the child unless DFPS proves urgent necessity.",
-    protection: "Strict statutory clock: DFPS cannot hold a child indefinitely on administrative claims. They must present sworn testimony and evidence under judicial scrutiny within 14 calendar days.",
+    summary: "If DFPS removes a child under emergency circumstances without a prior hearing, a full adversary hearing is generally required within 14 days of removal (subject to statutory exceptions). The court generally must return the child unless DFPS proves urgent necessity.",
+    protection: "Statutory clock: DFPS generally cannot hold a child indefinitely on administrative claims alone. They must present sworn testimony and evidence under judicial scrutiny within the statutory timeframe, subject to recognized exceptions.",
     keyQuote: "A full adversary hearing shall be held not later than the 14th day after the date the child was taken into possession by the governmental entity."
   },
   {
     code: "Texas Family Code § 263.401",
     title: "The Strict 1-Year Dismissal Deadline ('Drop-Dead Date')",
     category: "Texas Family Code",
-    summary: "Any suit filed by DFPS requesting managing conservatorship or termination of parental rights MUST be dismissed automatically by operation of law on the first Monday following the 1-year anniversary of DFPS being appointed temporary managing conservator.",
-    protection: "Prevents DFPS from keeping families trapped in open litigation indefinitely. If the case is not tried within 1 year (or granted a one-time 180-day extraordinary extension), the court loses jurisdiction and MUST dismiss the suit.",
+    summary: "Any suit filed by DFPS requesting managing conservatorship or termination of parental rights is generally dismissed automatically by operation of law on the first Monday following the 1-year anniversary of DFPS being appointed temporary managing conservator, subject to statutory exceptions (including a possible one-time 180-day extension).",
+    protection: "Generally limits how long DFPS can keep families in open litigation. If the case is not tried within 1 year (or granted a one-time 180-day extraordinary extension where authorized), the court generally loses jurisdiction and the suit is dismissed by operation of law—subject to statutory exceptions.",
     keyQuote: "Unless the court has commenced the trial on the merits... the court's jurisdiction over the suit... is terminated and the suit is automatically dismissed without a court order."
   }
 ];

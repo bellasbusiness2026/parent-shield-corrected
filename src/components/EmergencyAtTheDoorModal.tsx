@@ -20,11 +20,7 @@ export const EmergencyAtTheDoorModal: React.FC<EmergencyModalProps> = ({
 
   if (!isOpen) return null;
 
-  const scriptText = `I am exercising my rights under the Fourth and Fourteenth Amendments to the United States Constitution and Texas Family Code § 261.303. I do not consent to entry into my home or an interview of my children without a signed judicial order. 
-
-If you possess an Order in Aid of Investigation or a search warrant signed by a judge, please slide it under the door or email it to me. 
-
-Otherwise, please leave your business card and send all inquiries in writing to my email so I may review them with legal counsel. Pursuant to Texas Family Code § 261.307, this interaction is being recorded.`;
+  const scriptText = `I am exercising my rights under the Fourth and Fourteenth Amendments to the United States Constitution and Texas Family Code § 261.303. I do not consent to entry into my home or an interview of my children without a signed judicial order. \n\nIf you possess an Order in Aid of Investigation or a search warrant signed by a judge, please slide it under the door or email it to me. \n\nOtherwise, please leave your business card and send all inquiries in writing to my email so I may review them with legal counsel. Pursuant to Texas Family Code § 261.307, this interaction is being recorded.`;
 
   const handleCopyScript = () => {
     navigator.clipboard.writeText(scriptText);
@@ -88,7 +84,7 @@ Otherwise, please leave your business card and send all inquiries in writing to 
             <div className="bg-slate-800 border border-slate-700 rounded-lg p-3 text-center">
               <span className="inline-block w-6 h-6 rounded-full bg-amber-600 text-white font-bold text-xs leading-6 mb-1">2</span>
               <p className="font-semibold text-white text-xs">START RECORDING</p>
-              <p className="text-[11px] text-slate-400 mt-1">Authorized by TFC § 261.307(a)(2) & Tex. Penal Code § 16.02 (one-party consent).</p>
+              <p className="text-[11px] text-slate-400 mt-1">Texas is generally a one-party-consent state (Penal Code § 16.02). DFPS-related recording rights also appear in Family Code § 261.307. Not legal advice.</p>
             </div>
             <div className="bg-slate-800 border border-slate-700 rounded-lg p-3 text-center">
               <span className="inline-block w-6 h-6 rounded-full bg-blue-600 text-white font-bold text-xs leading-6 mb-1">3</span>
@@ -126,7 +122,7 @@ Otherwise, please leave your business card and send all inquiries in writing to 
             <p>&bull; <strong className="text-white">Caseworker:</strong> "If you have nothing to hide, you should let me in."</p>
             <p className="pl-3 text-slate-300">&rarr; <strong className="text-amber-300">The Law:</strong> Fourth Amendment privacy is not consciousness of guilt. TFC § 261.303 protects refusal.</p>
             <p>&bull; <strong className="text-white">Caseworker:</strong> "I will call the police."</p>
-            <p className="pl-3 text-slate-300">&rarr; <strong className="text-amber-300">The Law:</strong> Police cannot lawfully enter without a warrant or exigent circumstances either. Police do not possess authority to override TFC § 261.303.</p>
+            <p className="pl-3 text-slate-300">&rarr; <strong className="text-amber-300">The Law:</strong> As a general rule under TFC § 261.303, refusal of entry without a court order is protected; warrants, exigent circumstances, or other lawful authority can change the analysis. Ask counsel for your facts.</p>
           </div>
 
           {/* Immediate Logging Form */}
@@ -166,6 +162,16 @@ Otherwise, please leave your business card and send all inquiries in writing to 
                 className="w-full bg-slate-950 border border-slate-700 rounded px-3 py-1.5 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-amber-500"
               />
             </div>
+          </div>
+
+          {/* Legal disclaimer + TX recording note */}
+          <div className="bg-slate-950/80 border border-slate-700 rounded-lg p-3 text-[11px] text-slate-300 space-y-1.5">
+            <p>
+              <span className="font-semibold text-amber-400">Legal Notice: </span>
+              ParentShield is a parental-support tool that provides legal information, documentation, and communication drafting—not formal legal counsel or representation. Outcomes depend on your facts and court orders. Consult a licensed Texas family law attorney for active litigation or court deadlines.
+            </p>
+            <p className="text-slate-400">Recording and consent rules can vary by situation; this note is general Texas information, not legal advice.</p>
+            <p className="text-slate-400 leading-relaxed">In Texas, if you are part of a conversation, Penal Code § 16.02 generally lets you record it without the other person’s consent (one-party consent). For DFPS contact, Family Code § 261.307 also addresses the right to record interactions or interviews, and a recording may later be disclosed under a court order. Extra rules can apply to alleged-perpetrator interviews (§ 261.3027), including limits on posting identifying recordings online. This is general information, not legal advice—ask a Texas attorney about your situation.</p>
           </div>
         </div>
 

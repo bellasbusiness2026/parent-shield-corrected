@@ -118,7 +118,7 @@ export const SupportParentShield: React.FC<SupportParentShieldProps> = ({ onNavi
 
           <p className="text-sm sm:text-base text-slate-300 leading-relaxed">
             The CPS system frequently relies on fear, urgency, and parents not knowing their statutory protections to demand warrantless entry or involuntary agreements.
-            <span className="text-amber-400 font-semibold"> ParentShield exists to level the playing field</span> by empowering every parent with constitutional clarity, Texas Family Code § 261.307 protections, and unshakeable documentation.
+            <span className="text-amber-400 font-semibold"> ParentShield exists to level the playing field</span> by empowering every parent with constitutional clarity, Texas Family Code § 261.307 protections, and durable documentation.
           </p>
 
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-4 border-t border-slate-800/80">
@@ -131,8 +131,8 @@ export const SupportParentShield: React.FC<SupportParentShieldProps> = ({ onNavi
               <div className="text-[11px] text-slate-400 mt-0.5">Community Advocates</div>
             </div>
             <div className="bg-slate-950/60 border border-slate-800 rounded-xl p-3.5">
-              <div className="text-xl sm:text-2xl font-bold text-sky-400">100% Free</div>
-              <div className="text-[11px] text-slate-400 mt-0.5">Free for All Families</div>
+              <div className="text-xl sm:text-2xl font-bold text-sky-400">Free</div>
+              <div className="text-[11px] text-slate-400 mt-0.5">Free for Parents in Crisis</div>
             </div>
             <div className="bg-slate-950/60 border border-slate-800 rounded-xl p-3.5">
               <div className="text-xl sm:text-2xl font-bold text-white">Texas-Wide</div>

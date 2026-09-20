@@ -18,7 +18,7 @@ export const LegalReferenceDrawer: React.FC = () => {
             Core Legal Authorities & Statutory Architecture
           </h3>
           <p className="text-xs text-slate-400 mt-0.5">
-            The unyielding constitutional and statutory foundation under which ParentShield advocates for parents.
+            The strong constitutional and statutory foundation under which ParentShield advocates for parents.
           </p>
         </div>
       </div>
