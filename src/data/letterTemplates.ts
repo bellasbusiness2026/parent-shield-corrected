@@ -41,9 +41,9 @@ In response to your verbal requests, please note my formal position:
 - [Prompt: State your specific response to each request, e.g., 'As there is no court order compelling a home inspection or drug screening, I respectfully decline these voluntary requests at this time.']
 - Right to Legal Counsel (TFC § 261.307(a)(1)): I am exercising my statutory right to consult with an attorney before executing any Department paperwork, signing any parental child safety plans, or submitting to formal questioning.
 - Right to Written Communication: To eliminate confusion and protect the integrity of the record, all future requests, notices, or inquiries from DFPS must be submitted to me in writing via this email address.
-- Notice of Audio/Video Recording (TFC § 261.307(a)(2)): As authorized by Texas law, please be advised that all future interactions and meetings will be audio and/or video recorded.
+- Notice of Audio/Video Recording (TFC § 261.307(a)(2)): As generally authorized under Texas one-party-consent law and DFPS notice provisions, please be advised that all future interactions and meetings will be audio and/or video recorded. Recording and consent rules can vary by situation; this note is general Texas information, not legal advice.
 
-Please confirm receipt of this email to verify that this memorialization accurately reflects our conversation. If you believe any portion of this summary is inaccurate, please reply in writing within two (2) business days specifying the Department's corrections.
+Please confirm receipt of this email to verify that this memorialization accurately reflects our conversation. If you believe any portion of this summary is inaccurate, please reply promptly in writing (suggested practice: within a few business days) specifying the Department's corrections. This reply window is suggested practice, not a statutory deadline.
 
 Respectfully,
 
@@ -69,7 +69,7 @@ Dear [Caseworker Name],
 This letter addresses your verbal request on [Date] at [Time] to enter and inspect my private residence located at [Address].
 
 Please be advised of the following administrative and constitutional positions:
-1. Constitutional Protection: Under the Fourth Amendment to the United States Constitution and Article I, Section 9 of the Texas Constitution, private citizens possess an absolute right to be free from warrantless governmental searches and entries into their homes absent exigent circumstances.
+1. Constitutional Protection: Under the Fourth Amendment to the United States Constitution and Article I, Section 9 of the Texas Constitution, private citizens possess constitutional protection against unreasonable warrantless governmental searches and entries into their homes, generally absent a court order, consent, or recognized exceptions such as exigent circumstances.
 2. Statutory Authority (TFC § 261.303): Texas Family Code § 261.303 explicitly establishes that a parent's refusal to grant admission to their residence during a child protective investigation is lawful. The statute specifically delineates that should the Department seek compelled entry, its sole lawful remedy is to petition a court of competent jurisdiction for an 'Order in Aid of Investigation' based upon sworn evidence of probable cause.
 3. Non-Admission of Guilt: My exercise of this constitutional and statutory right is not an admission of any wrongdoing and cannot be lawfully construed as consciousness of guilt or lack of parental cooperation under Troxel v. Granville, 530 U.S. 57.
 
@@ -99,7 +99,7 @@ Dear [Caseworker Name],
 Confirming our communication on [Date] at [Time], during which you requested that I submit to [urinalysis / hair follicle / oral fluid] substance screening.
 
 Please be advised of the following:
-1. Statutory Right to Refuse (TFC § 261.307(a)(4)): Under Texas Family Code § 261.307, enacted via House Bill 730, Texas law explicitly guarantees a parent the right to refuse to submit to voluntary drug or alcohol testing during an investigation.
+1. Statutory Right to Refuse (TFC § 261.307(a)(4)): Under Texas Family Code § 261.307, enacted via House Bill 730, Texas law under the cited statute generally provides that a parent may refuse to submit to voluntary drug or alcohol testing during an investigation, absent a court order or other lawful authority.
 2. Absence of Judicial Compulsion: As confirmed, there is currently no judicial order signed by a court directing me to undergo drug testing. In the absence of a signed court order, any testing demand is an administrative request.
 3. Decision: Exercising my statutory rights under Texas law and upon due consideration, I decline to participate in voluntary testing at this time. 
 
@@ -188,10 +188,12 @@ Dear [Caseworker Name],
 
 Please be advised that pursuant to Texas Family Code § 261.307(a)(2), enacted through House Bill 730, parents have an explicit statutory right to make an audio or video recording of any interview or interaction conducted by the Department of Family and Protective Services.
 
-Furthermore, under Texas Penal Code § 16.02, Texas is a one-party consent state for oral wire, oral, or electronic communications.
+In Texas, if you are part of a conversation, Penal Code § 16.02 generally lets you record it without the other person’s consent (one-party consent). For DFPS contact, Family Code § 261.307 also addresses the right to record interactions or interviews, and a recording may later be disclosed under a court order. Extra rules can apply to alleged-perpetrator interviews (§ 261.3027), including limits on posting identifying recordings online. This is general information, not legal advice—ask a Texas attorney about your situation.
+
+Recording and consent rules can vary by situation; this note is general Texas information, not legal advice.
 
 Accordingly:
-1. Any and all upcoming telephone conversations, in-person conferences, or unannounced visits conducted by the Department will be recorded in their entirety to preserve an authentic, unaltered administrative audit record.
+1. Any and all upcoming telephone conversations, in-person conferences, or unannounced visits conducted by the Department will be recorded in their entirety to preserve an authentic, unaltered administrative audit record, consistent with the statutes cited above.
 2. I formally assert my right to have legal counsel present during any formal interviews or discussions regarding allegations.
 3. If an investigator or representative of the Department arrives at my residence or contacts me by phone, please be aware that the recording apparatus will be engaged from the outset of the encounter.
 
