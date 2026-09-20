@@ -118,7 +118,7 @@ export const SupportParentShield: React.FC<SupportParentShieldProps> = ({ onNavi
 
           <p className="text-sm sm:text-base text-slate-300 leading-relaxed">
             The CPS system frequently relies on fear, urgency, and parents not knowing their statutory protections to demand warrantless entry or involuntary agreements.
-            <span className="text-amber-400 font-semibold"> ParentShield exists to level the playing field</span> by empowering every parent with constitutional clarity, Texas Family Code § 261.307 protections, and unshakeable documentation.
+            <span className="text-amber-400 font-semibold"> ParentShield exists to level the playing field</span> by empowering every parent with constitutional clarity, Texas Family Code § 261.307 protections, and durable documentation.
           </p>
 
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-4 border-t border-slate-800/80">
