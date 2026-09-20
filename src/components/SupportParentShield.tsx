@@ -1,1 +1,1 @@
-LOAD_FROM_/workspace/SupportParentShield.tsx_FULL_33675_CHARS
+@file:///workspace/SupportParentShield.tsx
