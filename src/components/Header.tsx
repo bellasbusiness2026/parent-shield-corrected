@@ -61,7 +61,7 @@ export const Header: React.FC<HeaderProps> = ({
                 </span>
               </div>
               <p className="text-xs sm:text-sm text-slate-400 mt-0.5">
-                Constitutional Advocate, Procedural Due Process Buffer & Unshakeable Audit Trail Engine
+                Constitutional Advocate, Procedural Due Process Buffer & Durable Audit Trail Engine
               </p>
             </div>
           </div>
@@ -71,7 +71,7 @@ export const Header: React.FC<HeaderProps> = ({
             <AlertTriangle className="w-4 h-4 text-amber-400 shrink-0 mt-0.5" />
             <p className="leading-relaxed">
               <span className="font-semibold text-slate-200">Legal Notice: </span>
-              I provide legal information, documentation, and communication drafting, but this is not formal legal counsel; consult a licensed family law attorney for active litigation.
+              ParentShield is a parental-support tool that provides legal information, documentation, and communication drafting—not formal legal counsel or representation. Outcomes depend on your facts and court orders. Consult a licensed Texas family law attorney for active litigation or court deadlines.
             </p>
           </div>
         </div>
