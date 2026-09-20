@@ -223,7 +223,7 @@ export const LetterTemplatesLibrary: React.FC<LetterTemplatesLibraryProps> = ({ 
             </div>
 
             <p className="text-[11px] text-slate-400 italic">
-              Legal Notice: I provide legal information, documentation, and communication drafting, but this is not formal legal counsel; consult a licensed family law attorney for active litigation.
+              Legal Notice: ParentShield is a parental-support tool that provides legal information, documentation, and communication drafting—not formal legal counsel or representation. Outcomes depend on your facts and court orders. Consult a licensed Texas family law attorney for active litigation or court deadlines.
             </p>
           </div>
         </div>
