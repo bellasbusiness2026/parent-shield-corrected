@@ -10,7 +10,6 @@ export const SupportDirectHandles: React.FC<Props> = ({
   copiedHandle,
   handleCopyDirectHandle,
 }) => (
-              {/* Option B: Direct Handles */}
               <div className="space-y-3 bg-slate-950 border border-slate-800 rounded-xl p-4 text-xs">
                   <p className="text-slate-300 leading-relaxed">
                     Prefer to contribute directly? Send to ParentShield's support channels:
