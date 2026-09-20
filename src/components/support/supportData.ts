@@ -2,48 +2,8 @@ import { SupportPledge } from '../types';
 
 export const STORAGE_KEY_PLEDGES = 'parentshield_support_pledges_v1';
 
-export const INITIAL_COMMUNITY_PLEDGES: SupportPledge[] = [
-  {
-    id: 'sample-1',
-    amount: 50,
-    frequency: 'monthly',
-    supporterName: 'Elena R. (Harris County)',
-    isAnonymous: false,
-    message: 'To every mom standing terrified at their door: Stand firm on the 4th Amendment. ParentShield gave me the exact words to say and CPS closed the investigation without entry. Keep fighting!',
-    timestamp: '2026-09-10T14:22:00Z',
-    tierTitle: 'Protector Level',
-  },
-  {
-    id: 'sample-2',
-    amount: 150,
-    frequency: 'one-time',
-    supporterName: 'Marcus T. (Bexar County)',
-    isAnonymous: false,
-    message: 'CPS relied on our fear and ignorance of the law. Once we invoked TFC § 261.307 and put everything in writing, their threats vanished. Supporting ParentShield so every Texas parent has this armor.',
-    timestamp: '2026-09-08T09:45:00Z',
-    tierTitle: 'Guardian Level',
-  },
-  {
-    id: 'sample-3',
-    amount: 25,
-    frequency: 'monthly',
-    supporterName: 'Anonymous Advocate',
-    isAnonymous: true,
-    message: 'Knowledge is the greatest weapon against family separation. Keep families together!',
-    timestamp: '2026-09-05T18:10:00Z',
-    tierTitle: 'Defender Level',
-  },
-  {
-    id: 'sample-4',
-    amount: 75,
-    frequency: 'one-time',
-    supporterName: 'D. Rodriguez (Tarrant County)',
-    isAnonymous: false,
-    message: 'Proud to stand with this mission. Unlawful pressure thrives when parents feel alone—constitutional knowledge brings confidence and protection.',
-    timestamp: '2026-09-02T11:30:00Z',
-    tierTitle: 'Shield Level',
-  },
-];
+/** Community wall starts empty — only real pledges from users. No sample/fabricated entries. */
+export const INITIAL_COMMUNITY_PLEDGES: SupportPledge[] = [];
 
 /** Live Stripe Payment Links (ParentShield acct — buy.stripe.com only). */
 export const STRIPE_PAYMENT_LINKS: Record<string, string> = {
