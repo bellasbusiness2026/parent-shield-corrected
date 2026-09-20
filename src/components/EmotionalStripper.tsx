@@ -84,7 +84,7 @@ export const EmotionalStripper: React.FC<EmotionalStripperProps> = ({ onSaveToAu
             </h2>
             <p className="text-xs sm:text-sm text-slate-400 mt-1 max-w-3xl">
               When caseworkers push emotional triggers, parents instinctively defend themselves or over-explain—inadvertently making involuntary admissions or shifting the burden of proof onto themselves. 
-              ParentShield strips all anger, panic, defensiveness, and pleading, outputting calm, legally assertive, audit-proof prose.
+              ParentShield strips all anger, panic, defensiveness, and pleading, outputting calm, legally assertive, audit-ready prose.
             </p>
           </div>
         </div>
@@ -157,7 +157,7 @@ export const EmotionalStripper: React.FC<EmotionalStripperProps> = ({ onSaveToAu
             id="btn-strip-emotion"
             type="submit"
             disabled={loading || !rawText.trim()}
-            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-amber-500 hover:bg-amber-400 disabled:opacity-50 text-slate-950 font-bold text-xs sm:text-sm transition-colors shadow-md cursor-pointer"
+            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-amber-500 hover:bg-amber-400 disabled:opacity-50 text-slate-950 font-bold text-xs sm:text-sm transition-colors cursor-pointer"
           >
             {loading ? (
               <>
