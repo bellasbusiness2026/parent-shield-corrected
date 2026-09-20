@@ -98,8 +98,8 @@ export const SupportParentShield: React.FC<SupportParentShieldProps> = ({ onNavi
     setShowThankYouModal(true);
   };
 
-  const totalRaised = pledges.reduce((acc, p) => acc + p.amount, 18450);
-  const totalSupporters = pledges.length + 382;
+  const totalRaised = pledges.reduce((acc, p) => acc + p.amount, 0);
+  const totalSupporters = pledges.length;
 
   return (
     <div className="space-y-10 pb-12 animate-in fade-in duration-300">
