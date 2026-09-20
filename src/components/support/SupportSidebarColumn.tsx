@@ -15,7 +15,6 @@ export const SupportSidebarColumn: React.FC<Props> = ({
   copiedLink,
   handleCopyShareLink,
 }) => (
-        {/* Right Column: Mission Core & Community Solidarity Wall (5 cols) */}
         <div className="lg:col-span-5 space-y-6">
           {/* Mission Core Card */}
           <div className="bg-slate-900 border border-slate-800 rounded-xl p-5 shadow-xl space-y-4">
@@ -124,7 +123,4 @@ export const SupportSidebarColumn: React.FC<Props> = ({
             </button>
           </div>
         </div>
-      </div>
-
-
 );
