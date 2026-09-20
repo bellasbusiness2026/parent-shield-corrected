@@ -1,70 +1,42 @@
 import React from 'react';
-import { Check, Copy } from 'lucide-react';
 
 type Props = {
   copiedHandle: string | null;
   handleCopyDirectHandle: (handle: string, label: string) => void;
 };
 
-export const SupportDirectHandles: React.FC<Props> = ({
-  copiedHandle,
-  handleCopyDirectHandle,
-}) => (
-              {/* Option B: Direct Handles */}
-              <div className="space-y-3 bg-slate-950 border border-slate-800 rounded-xl p-4 text-xs">
-                  <p className="text-slate-300 leading-relaxed">
-                    Prefer to contribute directly? Send to ParentShield's support channels:
-                  </p>
+/** Placeholders until real Cash App / Venmo / PayPal accounts exist. */
+const DIRECT_PAY_PLACEHOLDERS = [
+  { id: 'cashapp', label: 'Cash App', labelClass: 'text-emerald-400', value: 'Coming soon' },
+  { id: 'venmo', label: 'Venmo', labelClass: 'text-sky-400', value: 'Coming soon' },
+  { id: 'paypal', label: 'PayPal / Zelle', labelClass: 'text-blue-400', value: 'Coming soon' },
+] as const;
 
-                  <div className="space-y-2">
-                    <div className="flex items-center justify-between p-2.5 bg-slate-900 border border-slate-800 rounded-lg">
-                      <div className="flex items-center gap-2">
-                        <span className="font-bold text-emerald-400">Cash App:</span>
-                        <code className="text-white font-mono bg-slate-950 px-2 py-0.5 rounded">$ParentShieldLegal</code>
-                      </div>
-                      <button
-                        type="button"
-                        onClick={() => handleCopyDirectHandle('$ParentShieldLegal', 'cashapp')}
-                        className="px-2.5 py-1 bg-slate-800 hover:bg-slate-700 text-slate-200 rounded flex items-center gap-1 text-[11px] cursor-pointer"
-                      >
-                        {copiedHandle === 'cashapp' ? <Check className="w-3 h-3 text-emerald-400" /> : <Copy className="w-3 h-3" />}
-                        <span>{copiedHandle === 'cashapp' ? 'Copied' : 'Copy'}</span>
-                      </button>
-                    </div>
+export const SupportDirectHandles: React.FC<Props> = () => (
+  <div className="space-y-3 bg-slate-950 border border-slate-800 rounded-xl p-4 text-xs">
+    <p className="text-slate-300 leading-relaxed">
+      Prefer to contribute directly? Cash App, Venmo, and PayPal handles will appear here once those accounts are set up. For now, use a Stripe tier above.
+    </p>
 
-                    <div className="flex items-center justify-between p-2.5 bg-slate-900 border border-slate-800 rounded-lg">
-                      <div className="flex items-center gap-2">
-                        <span className="font-bold text-sky-400">Venmo:</span>
-                        <code className="text-white font-mono bg-slate-950 px-2 py-0.5 rounded">@ParentShieldDefense</code>
-                      </div>
-                      <button
-                        type="button"
-                        onClick={() => handleCopyDirectHandle('@ParentShieldDefense', 'venmo')}
-                        className="px-2.5 py-1 bg-slate-800 hover:bg-slate-700 text-slate-200 rounded flex items-center gap-1 text-[11px] cursor-pointer"
-                      >
-                        {copiedHandle === 'venmo' ? <Check className="w-3 h-3 text-emerald-400" /> : <Copy className="w-3 h-3" />}
-                        <span>{copiedHandle === 'venmo' ? 'Copied' : 'Copy'}</span>
-                      </button>
-                    </div>
+    <div className="space-y-2">
+      {DIRECT_PAY_PLACEHOLDERS.map((row) => (
+        <div
+          key={row.id}
+          className="flex items-center justify-between p-2.5 bg-slate-900 border border-slate-800 rounded-lg opacity-80"
+        >
+          <div className="flex items-center gap-2">
+            <span className={`font-bold ${row.labelClass}`}>{row.label}:</span>
+            <code className="text-slate-400 font-mono bg-slate-950 px-2 py-0.5 rounded italic">{row.value}</code>
+          </div>
+          <span className="px-2.5 py-1 text-[11px] text-slate-500 border border-slate-700 rounded">
+            Pending
+          </span>
+        </div>
+      ))}
+    </div>
 
-                    <div className="flex items-center justify-between p-2.5 bg-slate-900 border border-slate-800 rounded-lg">
-                      <div className="flex items-center gap-2">
-                        <span className="font-bold text-blue-400">PayPal / Zelle:</span>
-                        <code className="text-white font-mono bg-slate-950 px-2 py-0.5 rounded">support@parentshield.org</code>
-                      </div>
-                      <button
-                        type="button"
-                        onClick={() => handleCopyDirectHandle('support@parentshield.org', 'paypal')}
-                        className="px-2.5 py-1 bg-slate-800 hover:bg-slate-700 text-slate-200 rounded flex items-center gap-1 text-[11px] cursor-pointer"
-                      >
-                        {copiedHandle === 'paypal' ? <Check className="w-3 h-3 text-emerald-400" /> : <Copy className="w-3 h-3" />}
-                        <span>{copiedHandle === 'paypal' ? 'Copied' : 'Copy'}</span>
-                      </button>
-                    </div>
-                  </div>
-
-                  <p className="text-[11px] text-slate-400 italic pt-1">
-                    * Include "ParentShield Support" in the memo. Thank you for standing in solidarity with Texas families and supporting the fight for parents' rights.
-                  </p>
-                </div>
+    <p className="text-[11px] text-slate-400 italic pt-1">
+      * Direct-pay tags are placeholders only — do not send funds here yet. Stripe checkout above is live.
+    </p>
+  </div>
 );
