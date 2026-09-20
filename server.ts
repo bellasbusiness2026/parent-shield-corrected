@@ -32,11 +32,11 @@ function getAi(): GoogleGenAI {
   return aiClient;
 }
 
-const MANDATORY_DISCLAIMER = "I provide legal information, documentation, and communication drafting, but this is not formal legal counsel; consult a licensed family law attorney for active litigation.";
+const MANDATORY_DISCLAIMER = "ParentShield is a parental-support tool that provides legal information, documentation, and communication drafting—not formal legal counsel or representation. Outcomes depend on your facts and court orders. Consult a licensed Texas family law attorney for active litigation or court deadlines.";
 
-const PARENTSHIELD_SYSTEM_INSTRUCTION = `You are "ParentShield," an expert, uncompromising AI Legal Advocate and Case Buffer for parents interacting with Child Protective Services (specifically the Texas Department of Family and Protective Services - DFPS).
+const PARENTSHIELD_SYSTEM_INSTRUCTION = `You are "ParentShield," an expert AI Legal Advocate and Case Buffer for parents interacting with Child Protective Services (specifically the Texas Department of Family and Protective Services - DFPS).
 
-You are an administrative and civil rights buffer, not an attorney. Your mission is to preserve parental rights, enforce procedural due process, prevent involuntary admissions, eliminate vague demands, and create an unshakeable audit trail.
+You are an administrative and civil rights parental-support buffer, not an attorney. Your mission is to help preserve parental rights, support procedural due process, prevent involuntary admissions, eliminate vague demands, and create a durable audit trail. Always include the mandatory disclaimer. Do not promise case outcomes.
 
 ### 1. CORE LEGAL FOUNDATION
 Operate strictly under the following legal authorities:
@@ -50,10 +50,10 @@ Operate strictly under the following legal authorities:
     3. Right to refuse entry into the home;
     4. Right to withhold child or records;
     5. Right to refuse drug testing.
-  - CRITICAL STATUTORY SANCTION: Failure to disclose activates an evidentiary exclusionary bar prohibiting DFPS from using statements or evidence obtained in violation.
-* TFC § 261.303: Refusal of entry is lawful. The Department cannot force access without an "Order in Aid of Investigation" granted by a judge on probable cause.
-* TFC § 262.201: Strict 14-day Adversary Hearing requirement post-removal (DFPS must return child or present clear evidence within 14 days).
-* TFC § 263.401: Strict 1-year dismissal deadline ("The Drop-Dead Date") for DFPS suits.
+  - If required verbal and written notices under § 261.307 are missing, information obtained (and derivative information) may be inadmissible in civil proceedings. This is not a universal criminal bar or automatic case dismissal.
+* TFC § 261.303: Refusal of entry without a court order is generally protected; outcomes are fact-specific. Exceptions (warrant, exigency, other lawful authority) can apply. The Department may petition for an "Order in Aid of Investigation."
+* TFC § 262.201: Generally a 14-day Adversary Hearing requirement post-removal (subject to statutory exceptions).
+* TFC § 263.401: Generally a 1-year dismissal deadline ("The Drop-Dead Date") for DFPS suits, subject to statutory exceptions including a possible one-time 180-day extension.
 
 ### 2. OPERATING RULES & DIRECTIVES
 1. RADICAL DE-ESCALATION & EMOTIONAL STRIPPING: Strip all anger, fear, defensiveness, or pleading. Produce calm, precise, legally neutral prose. Never yell, threaten, or apologize.
@@ -301,11 +301,11 @@ app.post("/api/advocate/hb730-audit", async (req, res) => {
     } = req.body;
 
     const violations: string[] = [];
-    if (!verbalDisclosuresGiven) violations.push("Failure to provide mandatory verbal notification of statutory rights at first contact (TFC § 261.307(a)).");
-    if (!writtenFormProvided) violations.push("Failure to provide mandatory written Form 261.307 notice of rights (TFC § 261.307(a)).");
+    if (!verbalDisclosuresGiven) violations.push("Missing required verbal notification of statutory rights at first contact (TFC § 261.307(a)).");
+    if (!writtenFormProvided) violations.push("Missing required written notice under § 261.307 (TFC § 261.307(a)).");
     if (!advisedOfAttorneyRight) violations.push("Failure to disclose the right to assistance of legal counsel prior to interview or inspection (TFC § 261.307(a)(1)).");
     if (!advisedOfRecordingRight) violations.push("Failure to disclose statutory right to audio/video record all interactions and interviews (TFC § 261.307(a)(2)).");
-    if (!advisedOfRightToRefuseEntry) violations.push("Failure to disclose absolute right to withhold consent for warrantless home entry (TFC § 261.307(a)(3) & § 261.303).");
+    if (!advisedOfRightToRefuseEntry) violations.push("Failure to disclose right to refuse entry without a court order (TFC § 261.307(a)(3) & § 261.303).");
     if (!advisedOfRightToRefuseDrugTest) violations.push("Failure to disclose right to refuse voluntary substance/drug screening absent judicial warrant (TFC § 261.307(a)(4)).");
     if (!advisedOfRightToWithholdRecords) violations.push("Failure to disclose right to withhold medical, school, and psychological records absent court order (TFC § 261.307(a)(5)).");
 
@@ -327,8 +327,8 @@ Specifically, the following mandatory statutory notices were omitted:
 ${violations.map((v, i) => `${i + 1}. ${v}`).join("\n")}
 
 Under Texas law and established civil rights precedent:
-1. Texas Family Code § 261.307 mandates that before conducting any interview, home inspection, or requesting voluntary cooperation, the Department MUST deliver both verbal and written advisement of parental rights.
-2. In accordance with the legislative intent and statutory exclusionary bar of § 261.307, any statements, observations, admissions, or documentation elicited prior to lawful disclosure are subject to procedural challenge and evidentiary exclusion in any subsequent administrative or judicial proceeding.
+1. Texas Family Code § 261.307 generally requires that before conducting any interview, home inspection, or requesting voluntary cooperation, the Department deliver both verbal and required written notice of parental rights under § 261.307.
+2. Under TFC § 261.307, if required verbal and written notices were missing, information obtained (and derivative information) may be inadmissible in civil proceedings. This is not a universal criminal bar or automatic case dismissal; consult counsel regarding your facts.
 3. The undersigned parent asserts all constitutional protections under the Fourth and Fourteenth Amendments to the United States Constitution, the presumption of parental fitness under Troxel v. Granville, 530 U.S. 57 (2000), and all protections under Texas Family Code § 261.303.
 4. All future communications must be conducted in writing via email to preserve a complete administrative audit trail. The parent exercises their statutory right to record any oral communication and to be accompanied by counsel.
 
@@ -346,7 +346,7 @@ Respectfully,
       violationsCount: violations.length,
       violations,
       statusAssessment: isExclusionaryBarTriggered
-        ? "CRITICAL STATUTORY VIOLATION DETECTED: Caseworker omitted mandatory HB 730 / TFC § 261.307 disclosures at initial contact. An evidentiary exclusionary bar applies."
+        ? "STATUTORY NOTICE GAP DETECTED: Caseworker omitted required HB 730 / TFC § 261.307 verbal and/or written notices at initial contact. Information obtained may be inadmissible in civil proceedings—not a criminal bar or automatic win."
         : "FULL INITIAL COMPLIANCE RECORDED: Written and verbal disclosures were reportedly delivered in accordance with TFC § 261.307.",
       formalViolationNotice,
       disclaimer: MANDATORY_DISCLAIMER,
@@ -480,7 +480,7 @@ Under the 4th Amendment to the U.S. Constitution and Texas Family Code § 261.30
 *"I am exercising my constitutional rights and Texas Family Code § 261.303. I do not consent to a warrantless search or entry into my home. If you have a signed court order, please slide it under the door or email it to me. Otherwise, please provide your business card and send all inquiries in writing."*
 
 3. **Record the Interaction:**
-Texas is a one-party consent state (Tex. Penal Code § 16.02), and TFC § 261.307(a)(2) explicitly protects your right to audio/video record CPS caseworkers. Start recording immediately.
+In Texas, if you are part of a conversation, Penal Code § 16.02 generally lets you record it without the other person’s consent (one-party consent). For DFPS contact, Family Code § 261.307 also addresses the right to record interactions or interviews, and a recording may later be disclosed under a court order. Extra rules can apply to alleged-perpetrator interviews (§ 261.3027), including limits on posting identifying recordings online. This is general information, not legal advice—ask a Texas attorney about your situation. Start recording immediately if lawful for your situation.
 
 4. **Send a Paper Trail Confirmation Immediately After:**
 Once they leave, send an immediate confirmation email:
@@ -492,7 +492,7 @@ Once they leave, send an immediate confirmation email:
 
 1. **Voluntary vs. Mandatory:**
 Ask the caseworker: *"Do you have a signed judicial order compelling me to submit to drug testing, or is this an agency request?"*
-- Without a signed court order, drug screening is **100% voluntary**.
+- Without a signed court order, drug screening is generally treated as a voluntary administrative request under Texas law (confirm with counsel for your facts).
 - DFPS cannot legally compel you to submit bodily fluids without a court order.
 
 2. **The Risk of 'Vague Voluntary Demands':**
