@@ -11,7 +11,7 @@ type Confidence = 'high' | 'medium' | 'low';
 type Spec = [string, Consent, string, string, string, Confidence];
 
 const specs: Spec[] = [
-  ['AL', 'one-party', 'Ala. Code § 13A-11-30 et seq.', 'Alabama — recording consent (one-party)', 'https://alison.legislature.state.al.us/code-of-alabama (Title 13A, Art. 11)', 'medium'],
+  ['AL', 'one-party', 'Ala. Code § 13A-11-30 et seq.', 'Alabama — recording consent (one-party)', 'https://alison.legislature.state.al.us/code-of-alabama', 'medium'],
   ['AK', 'one-party', 'Alaska Stat. § 42.20.310 et seq.', 'Alaska — recording consent (one-party)', 'https://www.akleg.gov/basis/statutes.asp#42.20.310', 'medium'],
   ['AZ', 'one-party', 'Ariz. Rev. Stat. § 13-3005', 'Arizona — recording consent (one-party)', 'https://www.azleg.gov/arsDetail/?title=13', 'medium'],
   ['AR', 'one-party', 'Ark. Code Ann. § 5-60-120', 'Arkansas — recording consent (one-party)', 'https://www.arkleg.state.ar.us/', 'medium'],
@@ -50,7 +50,7 @@ const specs: Spec[] = [
   ['OK', 'one-party', 'Okla. Stat. tit. 13, § 176.4', 'Oklahoma — recording consent (one-party)', 'https://www.oscn.net/applications/oscn/index.asp?ftdb=STOKST&level=1', 'medium'],
   ['OR', 'mixed/unclear', 'Or. Rev. Stat. § 165.540', 'Oregon — recording consent (mixed/unclear)', 'https://www.oregonlegislature.gov/bills_laws/ors/ors165.html', 'medium'],
   ['PA', 'all-party', '18 Pa. Cons. Stat. § 5703–5704', 'Pennsylvania — recording consent (all-party)', 'https://www.legis.state.pa.us/cfdocs/legis/LI/consCheck.cfm?txtType=HTM&ttl=18&div=0&chpt=57', 'high'],
-  ['RI', 'one-party', 'R.I. Gen. Laws § 11-35-21', 'Rhode Island — recording consent (one-party)', 'http://webserver.rilin.state.ri.us/Statutes/TITLE11/11-35/11-35-21.HTM', 'medium'],
+  ['RI', 'one-party', 'R.I. Gen. Laws § 11-35-21', 'Rhode Island — recording consent (one-party)', 'https://webserver.rilin.state.ri.us/Statutes/TITLE11/11-35/11-35-21.HTM', 'medium'],
   ['SC', 'one-party', 'S.C. Code Ann. § 17-30-30', 'South Carolina — recording consent (one-party)', 'https://www.scstatehouse.gov/code/t17c030.php', 'medium'],
   ['SD', 'one-party', 'S.D. Codified Laws § 23A-35A-20', 'South Dakota — recording consent (one-party)', 'https://sdlegislature.gov/Statutes/23A-35A-20', 'medium'],
   ['TN', 'one-party', 'Tenn. Code Ann. § 39-13-601', 'Tennessee — recording consent (one-party)', 'https://www.capitol.tn.gov/', 'medium'],
@@ -71,8 +71,8 @@ export const otherStateRecordingAuthorities: AuthorityRow[] = specs.map(([stateC
   kind: 'statute',
   citation,
   title,
-  summary: `Generally ${consent} for participant recording, subject to privacy, medium, interstate, and situation-specific limits.`,
-  parentProtection: `Generally ${consent} for participant recording, subject to privacy, medium, interstate, and situation-specific limits. ${OTHER_STATE_RECORDING_FOOTNOTE}`,
+  summary: `Generally ${consent} for participant recording, subject to privacy, interstate, and situation-specific limits.`,
+  parentProtection: `Generally ${consent} for participant recording, subject to privacy, interstate, and situation-specific limits. ${OTHER_STATE_RECORDING_FOOTNOTE}`,
   officialUrl,
   lastVerified: '2026-09-21',
   confidence,
