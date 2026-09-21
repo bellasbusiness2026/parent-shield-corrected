@@ -50,7 +50,6 @@ export const SupportContributeForm: React.FC<Props> = ({
   stripePaymentUrl,
   handleSubmitPledge,
 }) => (
-        {/* Left Column: Contribution Form & Direct Handles (7 cols) */}
         <div className="lg:col-span-7 space-y-6">
           <div className="bg-slate-900 border border-slate-800 rounded-xl p-5 sm:p-7 shadow-xl space-y-6">
             <div className="border-b border-slate-800 pb-4">
@@ -186,6 +185,4 @@ export const SupportContributeForm: React.FC<Props> = ({
             </div>
           </div>
         </div>
-
-
 );
