@@ -29,7 +29,7 @@ const specs: Spec[] = [
   ['LA', 'Louisiana Department of Children and Family Services (DCFS)', 'https://www.dcfs.louisiana.gov/', 'Parents can find DCFS child-welfare reporting and services information.', 'high'],
   ['ME', 'Maine Office of Child and Family Services (OCFS)', 'https://www.maine.gov/dhhs/ocfs', 'Parents can find OCFS child-welfare and family-support resources.', 'high'],
   ['MD', 'Maryland Department of Human Services (DHS)', 'https://dhs.maryland.gov/', 'Parents can find DHS child-welfare / Social Services Administration pathways.', 'high'],
-  ['MA', 'Massachusetts Department of Children and Families (DCF)', 'https://www.mass.gov/orgs/massachusetts-department-of-children-and-families', 'Parents can find DCF organization, services, reporting, and policy links.', 'medium'],
+  ['MA', 'Massachusetts Department of Children and Families (DCF)', 'https://www.mass.gov/orgs/massachusetts-department-of-children-families', 'Parents can find DCF organization, services, reporting, and policy links.', 'medium'],
   ['MI', 'Michigan Department of Health and Human Services (MDHHS)', 'https://www.michigan.gov/mdhhs', 'Parents can find MDHHS child-welfare / Children’s Services information.', 'high'],
   ['MN', 'Minnesota Department of Human Services (DHS)', 'https://mn.gov/dhs/', 'Parents can find DHS children-and-families program information.', 'high'],
   ['MS', 'Mississippi Department of Child Protection Services (DCPS) / MDHS', 'https://www.mdhs.ms.gov/', 'Parents can find child-protection related program links via MDHS.', 'medium'],
