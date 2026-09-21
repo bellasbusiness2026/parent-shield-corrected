@@ -1,7 +1,8 @@
-import { AuthorityRow } from '../authorityTypes';
-
 /**
- * Texas-deep rows (statutes, DFPS materials, HB 730, etc.).
- * Sable/Theo fill — keep officialUrl https and Theo-verified.
+ * Texas deep authorities — Part 2 (Theo).
+ * TODO(Theo): citation-verified TX statutes / DFPS handbook / key TX cases.
  */
-export const TEXAS_DEEP: AuthorityRow[] = [];
+
+import type { AuthorityRow } from '../authorityTypes';
+
+export const texasDeepAuthorities: AuthorityRow[] = [];

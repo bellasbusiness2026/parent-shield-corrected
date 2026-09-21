@@ -1,7 +1,8 @@
-import { AuthorityRow } from '../authorityTypes';
-
 /**
- * Other-state outbound official links + short summaries.
- * One or more rows per stateCode; Sable/Theo fill.
+ * Other-state authorities — optional expansion.
+ * TODO(Theo): fill when multi-state packs are verified.
  */
-export const OTHER_STATES: AuthorityRow[] = [];
+
+import type { AuthorityRow } from '../authorityTypes';
+
+export const otherStateAuthorities: AuthorityRow[] = [];
