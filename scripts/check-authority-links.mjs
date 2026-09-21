@@ -27,6 +27,11 @@ const ALLOWED_HOSTS = new Set([
   'statutes.capitol.texas.gov',
   'www.dfps.texas.gov',
   'dfps.texas.gov',
+  'capitol.texas.gov',
+  'www.capitol.texas.gov',
+  'www.rcfp.org',
+  'rcfp.org',
+  'tile.loc.gov',
 ]);
 
 const URL_RE = /officialUrl:\s*'([^']+)'/g;
@@ -54,7 +59,8 @@ function extractRows(filePath) {
     const title = TITLE_RE.exec(chunk)?.[1]?.replace(/\\'/g, "'") || '';
     const citation = CITATION_RE.exec(chunk)?.[1]?.replace(/\\'/g, "'") || '';
     const id = /id:\s*'([^']+)'/.exec(chunk)?.[1] || filePath;
-    rows.push({ id, officialUrl: urlMatch[1], title, citation, filePath });
+    const kind = /kind:\s*'([^']+)'/.exec(chunk)?.[1] || 'case';
+    rows.push({ id, officialUrl: urlMatch[1], title, citation, kind, filePath });
   }
   return rows;
 }
@@ -149,8 +155,10 @@ async function checkUrl(row) {
       return { id, ok: false, reason: `final host not allowlisted: ${finalHost}` };
     }
 
-    // Case pages: body should mention title or reporter cite tokens
-    {
+    // Case pages: body should mention title or reporter cite tokens.
+    // Statutes/agency pages are often SPA shells (e.g. statutes.capitol.texas.gov)
+    // — https + 2xx + allowlist is enough.
+    if (row.kind === 'case' || !row.kind) {
       const body = await res.text();
       const tokens = [];
       if (title) tokens.push(...title.split(/\s+/).filter((t) => t.length > 4).slice(0, 3));
