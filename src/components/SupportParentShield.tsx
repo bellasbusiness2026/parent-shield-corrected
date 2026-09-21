@@ -10,6 +10,7 @@ import {
 import { SupportContributeColumn } from './support/SupportContributeColumn';
 import { SupportSidebarColumn } from './support/SupportSidebarColumn';
 import { SupportThankYouModal } from './support/SupportThankYouModal';
+import { httpsOrigin } from '../utils/secureUrl';
 
 interface SupportParentShieldProps {
   onNavigateToTab?: (tab: string) => void;
@@ -59,7 +60,7 @@ export const SupportParentShield: React.FC<SupportParentShieldProps> = ({ onNavi
     : undefined;
 
   const handleCopyShareLink = () => {
-    const text = `Equip every parent with constitutional knowledge to stand firm against CPS overreach and keep families united. Free Texas DFPS legal rights buffer: ${window.location.origin}`;
+    const text = `Equip every parent with constitutional knowledge to stand firm against CPS overreach and keep families united. Free Texas DFPS legal rights buffer: ${httpsOrigin()}`;
     navigator.clipboard.writeText(text);
     setCopiedLink(true);
     setTimeout(() => setCopiedLink(false), 2500);
