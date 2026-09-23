@@ -300,7 +300,7 @@ export const HB730ExclusionaryAudit: React.FC<HB730AuditProps> = ({ onSaveToAudi
                     Formal Notice of Non-Compliance & Exclusionary Bar Assertion
                   </h3>
                   <p className="text-xs text-slate-400 mt-0.5">
-                    Transmit this formal correspondence to the investigator and supervisor to establish your formal due process challenge for the record.
+                    Informational sample draft for your records and review with your licensed family law attorney.
                   </p>
                 </div>
                 <div className="flex items-center gap-2">

@@ -222,9 +222,10 @@ export const LetterTemplatesLibrary: React.FC<LetterTemplatesLibraryProps> = ({ 
               {renderPopulatedBody(selectedTemplate.body)}
             </div>
 
-            <p className="text-[11px] text-slate-400 italic">
-              Legal Notice: ParentShield is a parental-support tool that provides legal information, documentation, and communication drafting—not formal legal counsel or representation. Outcomes depend on your facts and court orders. Consult a licensed Texas family law attorney for active litigation or court deadlines.
-            </p>
+            <div className="bg-slate-950/70 border border-slate-800 rounded-lg p-3 text-[11px] text-slate-400 leading-relaxed">
+              <span className="font-semibold text-amber-400">Legal Notice & Disclaimer: </span>
+              These correspondence templates are clerical self-help samples provided strictly for informational and educational purposes. Neither ParentShield nor its operators provide legal representation or legal advice. You are solely responsible for reviewing, modifying, and determining the legal appropriateness of any communication you send. Consult a licensed Texas family law attorney for active legal counsel.
+            </div>
           </div>
         </div>
       </div>

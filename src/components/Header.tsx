@@ -3,12 +3,14 @@ import { Shield, AlertTriangle, Scale, BookOpen, AlertOctagon, Printer, Heart } 
 
 interface HeaderProps {
   onOpenEmergencyModal: () => void;
+  onOpenTermsModal?: () => void;
   activeTab: string;
   setActiveTab: (tab: string) => void;
 }
 
 export const Header: React.FC<HeaderProps> = ({
   onOpenEmergencyModal,
+  onOpenTermsModal,
   activeTab,
   setActiveTab,
 }) => {
@@ -18,9 +20,19 @@ export const Header: React.FC<HeaderProps> = ({
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 border-b border-slate-800 flex flex-wrap items-center justify-between gap-3 text-xs">
         <div className="flex items-center gap-2 text-amber-400 font-medium">
           <Scale className="w-4 h-4 text-amber-400 shrink-0" />
-          <span>Texas DFPS Administrative Buffer &bull; Operating Under U.S. Const. Amends. IV & XIV &bull; TFC § 261.307 (HB 730) &bull; TFC § 261.303</span>
+          <span>Texas DFPS Administrative Self-Help Buffer &bull; Educational Reference &bull; U.S. Const. Amends. IV & XIV &bull; TFC § 261.307 (HB 730)</span>
         </div>
         <div className="flex items-center gap-2">
+          {onOpenTermsModal && (
+            <button
+              id="btn-open-terms-top"
+              type="button"
+              onClick={onOpenTermsModal}
+              className="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-md bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white border border-slate-700 text-[11px] font-medium transition-colors cursor-pointer"
+            >
+              <span>Legal Disclaimers & Terms</span>
+            </button>
+          )}
           <button
             id="btn-fund-parentshield-top"
             onClick={() => setActiveTab('support')}
@@ -61,25 +73,34 @@ export const Header: React.FC<HeaderProps> = ({
                 </span>
               </div>
               <p className="text-xs sm:text-sm text-slate-400 mt-0.5">
-                Constitutional Advocate, Procedural Due Process Buffer & Durable Audit Trail Engine
+                Self-Help Administrative Buffer, Procedural Documentation & Communication Drafting Utility
               </p>
             </div>
           </div>
 
-          {/* Grounded Mandatory Single-Sentence Disclaimer */}
+          {/* Grounded Mandatory Single-Sentence Disclaimer with Modal Trigger */}
           <div className="max-w-xl bg-slate-800/80 border border-slate-700 rounded-lg p-2.5 text-xs text-slate-300 flex items-start gap-2">
             <AlertTriangle className="w-4 h-4 text-amber-400 shrink-0 mt-0.5" />
-            <p className="leading-relaxed">
-              <span className="font-semibold text-slate-200">Legal Notice: </span>
-              ParentShield is a parental-support tool that provides legal information, documentation, and communication drafting—not formal legal counsel or representation. Outcomes depend on your facts and court orders. Consult a licensed Texas family law attorney for active litigation or court deadlines.
-            </p>
+            <div className="leading-relaxed">
+              <span className="font-semibold text-slate-200">Legal Disclaimer: </span>
+              Educational self-help and communication drafting software only; not legal advice, legal counsel, or an attorney-client relationship. Consult a licensed Texas attorney for active litigation.{' '}
+              {onOpenTermsModal && (
+                <button
+                  type="button"
+                  onClick={onOpenTermsModal}
+                  className="text-amber-400 hover:text-amber-300 underline font-medium cursor-pointer inline ml-1"
+                >
+                  Full Terms of Use & Liability Disclaimers
+                </button>
+              )}
+            </div>
           </div>
         </div>
 
         {/* Primary Navigation Tabs */}
         <nav className="mt-5 flex items-center gap-1 overflow-x-auto pb-1 border-t border-slate-800/80 pt-3">
           {[
-            { id: 'advisor', label: 'AI Advocate Consultation', icon: Shield },
+            { id: 'advisor', label: 'AI Educational Buffer & Drafting', icon: Shield },
             { id: 'one-pager', label: 'Printable Rights One-Pager', icon: Printer },
             { id: 'review', label: 'Case Review & Triage', icon: Scale },
             { id: 'de-escalate', label: 'Emotional Stripper & Buffer', icon: AlertTriangle },

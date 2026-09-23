@@ -11,14 +11,16 @@ export const AdvocateChat: React.FC<AdvocateChatProps> = ({ onSaveToAuditLog }) 
     {
       id: 'welcome',
       role: 'assistant',
-      content: `I am **ParentShield**, your AI Legal Advocate and Case Buffer for interactions with Texas DFPS (CPS).
+      content: `I am **ParentShield**, an educational self-help case buffer and administrative communication drafting assistant for Texas parents.
 
-My core mission is to preserve your parental rights under the **U.S. Constitution (4th & 14th Amendments)** and the **Texas Family Code**:
-- **TFC § 261.307 (HB 730):** Required verbal and written notice of rights (counsel, recording, entry refusal, drug test refusal). If required notices are missing, information obtained may be **inadmissible in civil proceedings**—not a criminal bar or automatic win.
-- **TFC § 261.303:** Refusing warrantless home entry is generally protected absent a court order or recognized exception. DFPS may petition for an "Order in Aid of Investigation" signed by a judge.
-- **TFC § 262.201 & § 263.401:** Generally applicable 14-day adversary hearing and 1-year dismissal deadlines (subject to statutory exceptions, including a possible 180-day extension).
+**My Educational & Clerical Focus:**
+- **TFC § 261.307 (HB 730):** Explaining statutory notice requirements (legal counsel, recording, entry refusal, drug test refusal) and procedural documentation.
+- **TFC § 261.303:** Explaining constitutional rights regarding warrantless home visits and the judicial order standard.
+- **The Paper Trail Rule:** Helping you draft calm, factual follow-up confirmation emails to document communications accurately.
 
-**How can I protect your case right now?** You can paste what the caseworker said, ask about your rights, or have me draft a formal response.`,
+*(Legal Notice: ParentShield is an automated self-help educational tool, not an attorney, law firm, or legal representative. I cannot provide formal legal advice or guarantee case outcomes. Consult a licensed Texas family law attorney for active legal counsel.)*
+
+**How can I assist your documentation right now?** You can paste what the caseworker stated, ask about statutory procedures, or request a calm written confirmation draft.`,
       timestamp: new Date().toISOString(),
     },
   ]);
@@ -222,8 +224,9 @@ My core mission is to preserve your parental rights under the **U.S. Constitutio
       </div>
 
       {/* Grounded Disclaimer Banner */}
-      <div className="bg-slate-950 px-4 py-1.5 border-t border-slate-800 text-[11px] text-slate-400 text-center">
-        ParentShield is a parental-support tool that provides legal information, documentation, and communication drafting—not formal legal counsel or representation. Outcomes depend on your facts and court orders. Consult a licensed Texas family law attorney for active litigation or court deadlines.
+      <div className="bg-slate-950 px-4 py-2 border-t border-slate-800 text-[11px] text-slate-400 text-center">
+        <span className="font-semibold text-amber-400">Legal Disclaimer: </span>
+        Self-help clerical drafting & educational reference only; not legal advice or legal counsel. No attorney-client relationship is created. Consult a licensed Texas family law attorney for active legal representation.
       </div>
 
       {/* Input Field */}

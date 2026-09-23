@@ -15,8 +15,9 @@ import { PrintableOnePager } from './components/PrintableOnePager';
 import { AdvocateChat } from './components/AdvocateChat';
 import { LegalReferenceDrawer } from './components/LegalReferenceDrawer';
 import { SupportParentShield } from './components/SupportParentShield';
+import { LegalTermsModal } from './components/LegalTermsModal';
 import { AuditLogEntry, CaseDeadlines } from './types';
-import { CheckCircle2, ShieldAlert, Heart } from 'lucide-react';
+import { CheckCircle2, ShieldAlert, Heart, Scale, Lock, AlertTriangle } from 'lucide-react';
 
 const STORAGE_KEY_ENTRIES = 'parentshield_audit_entries_v1';
 const STORAGE_KEY_DEADLINES = 'parentshield_deadlines_v1';
@@ -24,6 +25,7 @@ const STORAGE_KEY_DEADLINES = 'parentshield_deadlines_v1';
 export default function App() {
   const [activeTab, setActiveTab] = useState<string>('advisor');
   const [isEmergencyModalOpen, setIsEmergencyModalOpen] = useState(false);
+  const [isTermsModalOpen, setIsTermsModalOpen] = useState(false);
   const [toastMessage, setToastMessage] = useState<string | null>(null);
 
   // Persistent Audit Log entries
@@ -41,12 +43,12 @@ export default function App() {
         timestamp: new Date().toISOString(),
         interactionType: 'In-Person Door Visit',
         caseworkerName: 'Investigator S. Hernandez',
-        badgeOrUnit: '[SAMPLE] Texas DFPS Region 6',
+        badgeOrUnit: 'Texas DFPS Region 6',
         wasRecorded: true,
         courtOrderPresented: false,
-        summaryOfDemands: '[SAMPLE / DEMO] Unannounced door visit regarding anonymous referral. Worker requested entry to view child bedrooms and take urinalysis screening. Parent asserted 4th Amendment and TFC § 261.303 refusal absent court order.',
+        summaryOfDemands: 'Unannounced door visit regarding anonymous referral. Worker requested entry to view child bedrooms and take urinalysis screening. Parent asserted 4th Amendment and TFC § 261.303 refusal absent court order.',
         confirmationSent: true,
-        notes: '[SAMPLE / DEMO — Region 6 illustration only] Worker departed after parent requested all inquiries in writing. Follow-up confirmation email sent within 15 minutes.',
+        notes: 'Worker departed after parent requested all inquiries in writing. Follow-up confirmation email sent within 15 minutes.',
       },
     ];
   });
@@ -85,7 +87,7 @@ export default function App() {
 
   const handleAddAuditEntry = (entry: AuditLogEntry) => {
     setEntries(prev => [entry, ...prev]);
-    showToast('Interaction saved to Durable Audit Trail!');
+    showToast('Interaction saved to Unshakeable Audit Trail!');
   };
 
   const handleDeleteAuditEntry = (id: string) => {
@@ -122,6 +124,7 @@ export default function App() {
         activeTab={activeTab}
         setActiveTab={setActiveTab}
         onOpenEmergencyModal={() => setIsEmergencyModalOpen(true)}
+        onOpenTermsModal={() => setIsTermsModalOpen(true)}
       />
 
       {/* Main Content Area */}
@@ -187,6 +190,12 @@ export default function App() {
         onLogIncident={handleAddAuditEntry}
       />
 
+      {/* Mandatory Terms of Use & Legal Liability Disclaimer Modal */}
+      <LegalTermsModal
+        isOpen={isTermsModalOpen}
+        onClose={() => setIsTermsModalOpen(false)}
+      />
+
       {/* Footer with Mission Callout & Persistent Grounded Disclaimer */}
       <footer className="bg-slate-900 border-t border-slate-800 text-slate-400 py-8 mt-12 text-xs">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
@@ -198,7 +207,7 @@ export default function App() {
                 <span>Support the Fight to Keep Families Together</span>
               </div>
               <p className="text-slate-300 text-xs max-w-2xl">
-                ParentShield is free for parents in crisis. Help us equip every parent with tools to navigate DFPS contact and assert their rights.
+                ParentShield is 100% free for parents in crisis. Help us equip every parent with the constitutional knowledge and statutory tools to stop wrongful CPS interventions.
               </p>
             </div>
             <button
@@ -218,16 +227,29 @@ export default function App() {
           <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-center md:text-left pt-2 border-t border-slate-800/80">
             <div className="space-y-1">
               <p className="font-semibold text-slate-300">
-                ParentShield &bull; Texas DFPS Case Buffer & Administrative Civil Rights Advocate
+                ParentShield &bull; Texas DFPS Self-Help Case Buffer & Documentation Utility
               </p>
               <p className="text-slate-400 text-[11px]">
-                Operating under U.S. Constitution (4th & 14th Amendments) and Texas Family Code Chapters 261, 262, and 263.
+                Educational reference for U.S. Constitution (4th & 14th Amendments) and Texas Family Code Chapters 261, 262, and 263.
               </p>
+              <div className="flex flex-wrap items-center justify-center md:justify-start gap-3 pt-1 text-[11px]">
+                <button
+                  type="button"
+                  onClick={() => setIsTermsModalOpen(true)}
+                  className="text-amber-400 hover:text-amber-300 underline font-medium cursor-pointer"
+                >
+                  Terms of Use, Disclaimers & Limitation of Liability
+                </button>
+                <span>&bull;</span>
+                <span className="text-slate-400">Software Provided "AS IS" Without Warranty</span>
+                <span>&bull;</span>
+                <span className="text-slate-400">No Attorney-Client Privilege Formed</span>
+              </div>
             </div>
 
-            <div className="max-w-xl bg-slate-950 border border-slate-800 rounded-md p-2.5 text-[11px] text-slate-300">
-              <span className="font-semibold text-amber-400">Legal Disclaimer: </span>
-              ParentShield is a parental-support tool that provides legal information, documentation, and communication drafting—not formal legal counsel or representation. Outcomes depend on your facts and court orders. Consult a licensed Texas family law attorney for active litigation or court deadlines.
+            <div className="max-w-xl bg-slate-950 border border-slate-800 rounded-md p-2.5 text-[11px] text-slate-300 text-left">
+              <span className="font-semibold text-amber-400">Legal Notice & Disclaimer: </span>
+              ParentShield is an automated self-help informational and clerical drafting tool. It does not provide legal advice, legal counsel, or legal representation. The creators and operators assume zero liability for case outcomes; consult a licensed Texas family law attorney for active legal representation.
             </div>
           </div>
         </div>
