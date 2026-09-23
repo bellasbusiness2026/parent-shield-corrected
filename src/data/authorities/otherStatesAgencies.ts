@@ -1,0 +1,77 @@
+/**
+ * Other-state CPS/agency outbound links — Theo 2026-09-21.
+ * Ohio omitted (NEED_LOOKUP).
+ */
+import type { AuthorityRow } from '../authorityTypes';
+
+type Confidence = 'high' | 'medium' | 'low';
+type Spec = [string, string, string, string, Confidence];
+
+const specs: Spec[] = [
+  ['AL', 'Alabama Department of Human Resources (DHR) — Child Protective Services', 'https://dhr.alabama.gov/', 'Parents can find CPS reporting information, protective-services program overviews, and agency contacts.', 'high'],
+  ['AK', 'Alaska Department of Family and Community Services — Office of Children’s Services', 'https://dfcs.alaska.gov/', 'Parents can find OCS program information and child-protection service pathways under DFCS.', 'high'],
+  ['AZ', 'Arizona Department of Child Safety (DCS)', 'https://dcs.az.gov/', 'Parents can find DCS home-page links for reporting, services, and case-related information.', 'high'],
+  ['AR', 'Arkansas Department of Human Services', 'https://humanservices.arkansas.gov/', 'Parents can find DHS portals that route to child-welfare / protective-services information.', 'medium'],
+  ['CA', 'California Department of Social Services (CDSS)', 'https://www.cdss.ca.gov/', 'Parents can find statewide child-welfare policy information and links toward county child-welfare agencies.', 'high'],
+  ['CO', 'Colorado Department of Human Services (CDHS)', 'https://cdhs.colorado.gov/', 'Parents can find child/family services and child-welfare program information.', 'medium'],
+  ['CT', 'Connecticut Department of Children and Families (DCF)', 'https://portal.ct.gov/DCF', 'Parents can find DCF reporting guidance, foster/adoption information, and family-services pages.', 'high'],
+  ['DE', 'Delaware Department of Services for Children, Youth and Their Families (DSCYF)', 'https://kids.delaware.gov/', 'Parents can find DSCYF hotlines, children’s services, and contact pathways.', 'high'],
+  ['DC', 'DC Child and Family Services Agency (CFSA)', 'https://cfsa.dc.gov/', 'Parents can find CFSA reporting, foster care, and family-support information for DC.', 'high'],
+  ['FL', 'Florida Department of Children and Families (DCF)', 'https://www.myflfamilies.com/', 'Parents can find abuse-hotline information and child/family program resources.', 'high'],
+  ['GA', 'Georgia Division of Family & Children Services (DFCS)', 'https://dfcs.georgia.gov/', 'Parents can find DFCS child-protective and family-services information.', 'high'],
+  ['HI', 'Hawaii Department of Human Services', 'https://humanservices.hawaii.gov/', 'Parents can find DHS program portals including child-welfare related services.', 'medium'],
+  ['ID', 'Idaho Department of Health and Welfare', 'https://healthandwelfare.idaho.gov/', 'Parents can find children/families programs including child-protection information.', 'high'],
+  ['IL', 'Illinois Department of Children and Family Services (DCFS)', 'https://dcfs.illinois.gov/', 'Parents can find DCFS reporting, foster care, and parent-resource information.', 'high'],
+  ['IN', 'Indiana Department of Child Services (DCS)', 'https://www.in.gov/dcs/', 'Parents can find DCS hotline, policy, and family-services information.', 'high'],
+  ['IA', 'Iowa Health and Human Services (HHS)', 'https://hhs.iowa.gov/', 'Parents can find child-protective and family-well-being program information under HHS.', 'high'],
+  ['KS', 'Kansas Department for Children and Families (DCF)', 'https://www.dcf.ks.gov/', 'Parents can find DCF child-welfare and assistance program information.', 'high'],
+  ['KY', 'Kentucky Cabinet for Health and Family Services (CHFS) / DCBS', 'https://chfs.ky.gov/', 'Parents can find CHFS/DCBS child-protection and family-support program gateways.', 'medium'],
+  ['LA', 'Louisiana Department of Children and Family Services (DCFS)', 'https://www.dcfs.louisiana.gov/', 'Parents can find DCFS child-welfare reporting and services information.', 'high'],
+  ['ME', 'Maine Office of Child and Family Services (OCFS)', 'https://www.maine.gov/dhhs/ocfs', 'Parents can find OCFS child-welfare and family-support resources.', 'high'],
+  ['MD', 'Maryland Department of Human Services (DHS)', 'https://dhs.maryland.gov/', 'Parents can find DHS child-welfare / Social Services Administration pathways.', 'high'],
+  ['MA', 'Massachusetts Department of Children and Families (DCF)', 'https://www.mass.gov/orgs/massachusetts-department-of-children-families', 'Parents can find DCF organization, services, reporting, and policy links.', 'medium'],
+  ['MI', 'Michigan Department of Health and Human Services (MDHHS)', 'https://www.michigan.gov/mdhhs', 'Parents can find MDHHS child-welfare / Children’s Services information.', 'high'],
+  ['MN', 'Minnesota Department of Human Services (DHS)', 'https://mn.gov/dhs/', 'Parents can find DHS children-and-families program information.', 'high'],
+  ['MS', 'Mississippi Department of Child Protection Services (DCPS) / MDHS', 'https://www.mdhs.ms.gov/', 'Parents can find child-protection related program links via MDHS.', 'medium'],
+  ['MO', 'Missouri Department of Social Services — Children’s Division', 'https://dss.mo.gov/', 'Parents can find DSS gateways to Children’s Division child-abuse/neglect information and hotline resources.', 'medium'],
+  ['MT', 'Montana Child and Family Services Division (CFSD)', 'https://dphhs.mt.gov/cfsd', 'Parents can find CFSD child-protection and foster-care information.', 'high'],
+  ['NE', 'Nebraska Department of Health and Human Services (DHHS)', 'https://dhhs.ne.gov/', 'Parents can find DHHS Children and Family Services information.', 'medium'],
+  ['NV', 'Nevada Division of Child and Family Services (DCFS)', 'https://dcfs.nv.gov/', 'Parents can find DCFS child-welfare program and reporting information.', 'high'],
+  ['NH', 'New Hampshire Department of Health and Human Services (DHHS) / DCYF', 'https://www.dhhs.nh.gov/', 'Parents can find DHHS pathways to Division for Children, Youth and Families.', 'medium'],
+  ['NJ', 'New Jersey Department of Children and Families (DCF)', 'https://www.nj.gov/dcf/', 'Parents can find NJ DCF reporting, family-services, and policy information.', 'high'],
+  ['NM', 'New Mexico Children, Youth and Families Department (CYFD)', 'https://www.cyfd.nm.gov/', 'Parents can find CYFD protective-services and family-support information.', 'high'],
+  ['NY', 'New York State Office of Children and Family Services (OCFS)', 'https://ocfs.ny.gov/', 'Parents can find OCFS statewide child-welfare policy and hotline information.', 'medium'],
+  ['NC', 'North Carolina Department of Health and Human Services — Social Services', 'https://www.ncdhhs.gov/divisions/social-services', 'Parents can find DHHS social-services information including child-welfare program links.', 'high'],
+  ['ND', 'North Dakota Health and Human Services — Children and Family Services', 'https://www.hhs.nd.gov/cfs', 'Parents can find CFS child-protection and foster-care information.', 'high'],
+  ['OK', 'Oklahoma Human Services (OKDHS)', 'https://oklahoma.gov/okdhs.html', 'Parents can find OKDHS child-welfare and assistance program information.', 'high'],
+  ['OR', 'Oregon Department of Human Services (ODHS)', 'https://www.oregon.gov/odhs/pages/default.aspx', 'Parents can find ODHS child-welfare / Child Welfare program gateways.', 'high'],
+  ['PA', 'Pennsylvania Department of Human Services (DHS)', 'https://www.pa.gov/agencies/dhs', 'Parents can find DHS child-welfare / ChildLine-related information pathways.', 'high'],
+  ['RI', 'Rhode Island Department of Children, Youth & Families (DCYF)', 'https://dcyf.ri.gov/', 'Parents can find DCYF child-protection and family-services information.', 'high'],
+  ['SC', 'South Carolina Department of Social Services (DSS)', 'https://dss.sc.gov/', 'Parents can find DSS child-protective and foster-care information.', 'high'],
+  ['SD', 'South Dakota Department of Social Services (DSS)', 'https://dss.sd.gov/', 'Parents can find DSS child-protection and family-services information.', 'high'],
+  ['TN', 'Tennessee Department of Children’s Services (DCS)', 'https://www.tn.gov/dcs.html', 'Parents can find DCS reporting, foster care, and parent-resource information.', 'high'],
+  ['TX', 'Texas Department of Family and Protective Services (DFPS)', 'https://www.dfps.texas.gov/', 'Parents can find DFPS CPS reporting, Investigations, and parent-resource information.', 'high'],
+  ['UT', 'Utah Division of Child and Family Services (DCFS)', 'https://dcfs.utah.gov/', 'Parents can find DCFS child-protection and family-services information.', 'high'],
+  ['VT', 'Vermont Department for Children and Families (DCF)', 'https://dcf.vermont.gov/', 'Parents can find DCF Family Services / child-protection information.', 'high'],
+  ['VA', 'Virginia Department of Social Services (VDSS)', 'https://www.dss.virginia.gov/', 'Parents can find VDSS child-protective services information.', 'high'],
+  ['WA', 'Washington State Department of Children, Youth & Families (DCYF)', 'https://www.dcyf.wa.gov/', 'Parents can find DCYF child-welfare reporting and services information.', 'high'],
+  ['WV', 'West Virginia Department of Human Services / Bureau for Family Assistance', 'https://dhhr.wv.gov/Pages/default.aspx', 'Parents can find DHHR/DHS family-services gateways and child-welfare pathways.', 'medium'],
+  ['WI', 'Wisconsin Department of Children and Families (DCF)', 'https://dcf.wisconsin.gov/', 'Parents can find DCF child-protective and family-services information.', 'high'],
+  ['WY', 'Wyoming Department of Family Services (DFS)', 'https://dfs.wyo.gov/', 'Parents can find DFS child-protection services and reporting information.', 'high'],
+];
+
+export const otherStateAgencyAuthorities: AuthorityRow[] = specs.map(([stateCode, citation, officialUrl, summary, confidence]) => ({
+  id: `us-${stateCode.toLowerCase()}-cps-agency`,
+  jurisdiction: 'other-state',
+  stateCode,
+  kind: 'agency',
+  citation,
+  title: `${stateCode} child-welfare agency`,
+  summary,
+  parentProtection: `${summary} Local/county offices often handle investigations. Not legal advice.`,
+  officialUrl,
+  lastVerified: '2026-09-21',
+  confidence,
+  tags: ['cps-agency'],
+  relatedIds: [],
+}));
