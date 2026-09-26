@@ -19,11 +19,11 @@ export const SupportDirectHandles: React.FC<Props> = ({
                     <div className="flex items-center justify-between p-2.5 bg-slate-900 border border-slate-800 rounded-lg">
                       <div className="flex items-center gap-2">
                         <span className="font-bold text-emerald-400">Cash App:</span>
-                        <code className="text-white font-mono bg-slate-950 px-2 py-0.5 rounded">$ParentShieldLegal</code>
+                        <code className="text-white font-mono bg-slate-950 px-2 py-0.5 rounded">$ParentShield</code>
                       </div>
                       <button
                         type="button"
-                        onClick={() => handleCopyDirectHandle('$ParentShieldLegal', 'cashapp')}
+                        onClick={() => handleCopyDirectHandle('$ParentShield', 'cashapp')}
                         className="px-2.5 py-1 bg-slate-800 hover:bg-slate-700 text-slate-200 rounded flex items-center gap-1 text-[11px] cursor-pointer"
                       >
                         {copiedHandle === 'cashapp' ? <Check className="w-3 h-3 text-emerald-400" /> : <Copy className="w-3 h-3" />}

@@ -1,4 +1,4 @@
-import { SupportPledge } from '../types';
+import { SupportPledge } from '../../types';
 
 export const STORAGE_KEY_PLEDGES = 'parentshield_support_pledges_v2';
 
