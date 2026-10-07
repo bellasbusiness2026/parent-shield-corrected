@@ -23,7 +23,8 @@ type Props = {
   copiedHandle: string | null;
   handleCopyDirectHandle: (handle: string, label: string) => void;
   effectiveAmount: number;
-  stripePaymentUrl?: string;
+  stripeCheckoutTier?: string;
+  checkoutLoading?: boolean;
   handleSubmitPledge: (e: React.FormEvent) => void;
 };
 
@@ -47,7 +48,8 @@ export const SupportContributeForm: React.FC<Props> = ({
   copiedHandle,
   handleCopyDirectHandle,
   effectiveAmount,
-  stripePaymentUrl,
+  stripeCheckoutTier,
+  checkoutLoading,
   handleSubmitPledge,
 }) => (
         <div className="lg:col-span-7 space-y-6">
@@ -155,12 +157,15 @@ export const SupportContributeForm: React.FC<Props> = ({
                   <button
                     type="submit"
                     id="btn-submit-pledge"
-                    className="w-full py-3 px-4 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 font-bold text-sm rounded-xl shadow-lg transition-all flex items-center justify-center gap-2 cursor-pointer"
+                    disabled={checkoutLoading}
+                    className="w-full disabled:opacity-60 disabled:cursor-wait py-3 px-4 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 font-bold text-sm rounded-xl shadow-lg transition-all flex items-center justify-center gap-2 cursor-pointer"
                   >
                     <Heart className="w-4 h-4 fill-slate-950" />
                     <span>
-                      {stripePaymentUrl
-                        ? `Contribute $${effectiveAmount}${frequency === 'monthly' ? '/mo' : ''} via Stripe`
+                      {stripeCheckoutTier
+                        ? checkoutLoading
+                          ? 'Redirecting to secure checkout...'
+                          : `Contribute $${effectiveAmount} (one-time) via Stripe`
                         : `Confirm & Pledge $${effectiveAmount}${frequency === 'monthly' ? ' / Month' : ''} to ParentShield`}
                     </span>
                   </button>

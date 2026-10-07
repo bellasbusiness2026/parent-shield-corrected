@@ -4,7 +4,6 @@ import { SupportPledge } from '../types';
 import {
   STORAGE_KEY_PLEDGES,
   INITIAL_COMMUNITY_PLEDGES,
-  STRIPE_PAYMENT_LINKS,
   PRESET_TIERS,
 } from './support/supportData';
 import { SupportContributeColumn } from './support/SupportContributeColumn';
@@ -12,11 +11,14 @@ import { SupportSidebarColumn } from './support/SupportSidebarColumn';
 import { SupportThankYouModal } from './support/SupportThankYouModal';
 import { httpsOrigin } from '../utils/secureUrl';
 
+const PENDING_CHECKOUT_PLEDGE_KEY = 'parentshield_pending_checkout_pledge';
+
 interface SupportParentShieldProps {
   onNavigateToTab?: (tab: string) => void;
+  checkoutStatus?: 'success' | 'cancel' | null;
 }
 
-export const SupportParentShield: React.FC<SupportParentShieldProps> = ({ onNavigateToTab }) => {
+export const SupportParentShield: React.FC<SupportParentShieldProps> = ({ onNavigateToTab, checkoutStatus }) => {
   const [selectedTier, setSelectedTier] = useState<number>(35);
   const [customAmount, setCustomAmount] = useState<string>('');
   const [frequency, setFrequency] = useState<'one-time' | 'monthly'>('one-time');
@@ -29,6 +31,7 @@ export const SupportParentShield: React.FC<SupportParentShieldProps> = ({ onNavi
   const [copiedHandle, setCopiedHandle] = useState<string | null>(null);
   const [showThankYouModal, setShowThankYouModal] = useState(false);
   const [lastPledge, setLastPledge] = useState<SupportPledge | null>(null);
+  const [checkoutLoading, setCheckoutLoading] = useState(false);
 
   const [pledges, setPledges] = useState<SupportPledge[]>(() => {
     try {
@@ -48,6 +51,23 @@ export const SupportParentShield: React.FC<SupportParentShieldProps> = ({ onNavi
     }
   }, [pledges]);
 
+  // After returning from Stripe Checkout, add the pending pledge to the wall only on success.
+  useEffect(() => {
+    if (!checkoutStatus) return;
+    try {
+      const pending = sessionStorage.getItem(PENDING_CHECKOUT_PLEDGE_KEY);
+      sessionStorage.removeItem(PENDING_CHECKOUT_PLEDGE_KEY);
+      if (checkoutStatus === 'success' && pending) {
+        const pledge: SupportPledge = JSON.parse(pending);
+        setPledges(prev => [pledge, ...prev]);
+        setLastPledge(pledge);
+        setShowThankYouModal(true);
+      }
+    } catch (e) {
+      console.error(e);
+    }
+  }, [checkoutStatus]);
+
   const effectiveAmount = customAmount ? parseFloat(customAmount) || 0 : selectedTier;
 
   const selectedPresetTier = PRESET_TIERS.find(t => t.amount === effectiveAmount);
@@ -55,9 +75,8 @@ export const SupportParentShield: React.FC<SupportParentShieldProps> = ({ onNavi
     name: effectiveAmount >= 150 ? 'Guardian Level' : effectiveAmount >= 75 ? 'Shield Level' : effectiveAmount >= 35 ? 'Protector Level' : effectiveAmount >= 15 ? 'Defender Level' : 'Together Level',
     tagline: 'Supporting the mission to protect parental rights and keep families together.',
   };
-  const stripePaymentUrl = selectedPresetTier
-    ? STRIPE_PAYMENT_LINKS[selectedPresetTier.id]
-    : undefined;
+  // Preset tiers go through Stripe Checkout (server maps the tier name to a price).
+  const stripeCheckoutTier = selectedPresetTier?.id;
 
   const handleCopyShareLink = () => {
     const text = `Equip every parent with constitutional knowledge to stand firm against CPS overreach and keep families united. Free Texas DFPS legal rights buffer: ${httpsOrigin()}`;
@@ -72,27 +91,49 @@ export const SupportParentShield: React.FC<SupportParentShieldProps> = ({ onNavi
     setTimeout(() => setCopiedHandle(null), 2500);
   };
 
-  const handleSubmitPledge = (e: React.FormEvent) => {
+  const handleSubmitPledge = async (e: React.FormEvent) => {
     e.preventDefault();
     if (effectiveAmount < 2) {
       alert('Please select or enter an amount of at least $2.');
       return;
     }
 
-    if (stripePaymentUrl) {
-      window.open(stripePaymentUrl, '_blank', 'noopener,noreferrer');
-    }
-
     const newPledge: SupportPledge = {
       id: 'pledge-' + Date.now(),
       amount: effectiveAmount,
-      frequency,
+      frequency: stripeCheckoutTier ? 'one-time' : frequency,
       supporterName: isAnonymous ? 'Anonymous Texas Parent' : (supporterName.trim() || 'Supporter of Parental Rights'),
       isAnonymous,
       message: message.trim() || undefined,
       timestamp: new Date().toISOString(),
       tierTitle: currentTierInfo.name,
     };
+
+    if (stripeCheckoutTier) {
+      setCheckoutLoading(true);
+      try {
+        const res = await fetch('/api/create-checkout-session', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ tier: stripeCheckoutTier }),
+        });
+        const data = await res.json().catch(() => ({}));
+        if (!res.ok || !data.url) {
+          throw new Error(data.error || 'Could not start checkout.');
+        }
+        try {
+          sessionStorage.setItem(PENDING_CHECKOUT_PLEDGE_KEY, JSON.stringify(newPledge));
+        } catch (storageError) {
+          console.error(storageError);
+        }
+        window.location.assign(data.url);
+      } catch (err: any) {
+        console.error(err);
+        alert(err?.message || 'Could not start checkout. Please try again.');
+        setCheckoutLoading(false);
+      }
+      return;
+    }
 
     setPledges(prev => [newPledge, ...prev]);
     setLastPledge(newPledge);
@@ -164,7 +205,8 @@ export const SupportParentShield: React.FC<SupportParentShieldProps> = ({ onNavi
           copiedHandle={copiedHandle}
           handleCopyDirectHandle={handleCopyDirectHandle}
           effectiveAmount={effectiveAmount}
-          stripePaymentUrl={stripePaymentUrl}
+          stripeCheckoutTier={stripeCheckoutTier}
+          checkoutLoading={checkoutLoading}
           handleSubmitPledge={handleSubmitPledge}
         />
         <SupportSidebarColumn

@@ -23,7 +23,13 @@ const STORAGE_KEY_ENTRIES = 'parentshield_audit_entries_v1';
 const STORAGE_KEY_DEADLINES = 'parentshield_deadlines_v1';
 
 export default function App() {
-  const [activeTab, setActiveTab] = useState<string>('advisor');
+  // Return from Stripe Checkout (?checkout=success|cancel)
+  const [checkoutStatus, setCheckoutStatus] = useState<'success' | 'cancel' | null>(() => {
+    if (typeof window === 'undefined') return null;
+    const value = new URLSearchParams(window.location.search).get('checkout');
+    return value === 'success' || value === 'cancel' ? value : null;
+  });
+  const [activeTab, setActiveTab] = useState<string>(() => (checkoutStatus ? 'support' : 'advisor'));
   const [isEmergencyModalOpen, setIsEmergencyModalOpen] = useState(false);
   const [isTermsModalOpen, setIsTermsModalOpen] = useState(false);
   const [toastMessage, setToastMessage] = useState<string | null>(null);
@@ -79,6 +85,12 @@ export default function App() {
       console.error(e);
     }
   }, [deadlines]);
+
+  useEffect(() => {
+    if (checkoutStatus) {
+      window.history.replaceState(null, '', window.location.pathname);
+    }
+  }, [checkoutStatus]);
 
   const showToast = (msg: string) => {
     setToastMessage(msg);
@@ -137,6 +149,30 @@ export default function App() {
           </div>
         )}
 
+        {/* Stripe Checkout return message */}
+        {checkoutStatus && (
+          <div
+            className={`rounded-xl border px-4 py-3 text-sm flex items-start justify-between gap-3 ${
+              checkoutStatus === 'success'
+                ? 'bg-emerald-950/40 border-emerald-500/40 text-emerald-200'
+                : 'bg-slate-900 border-slate-700 text-slate-300'
+            }`}
+          >
+            <span>
+              {checkoutStatus === 'success'
+                ? 'Thank you! Your support payment went through. You are helping keep families together.'
+                : 'Checkout was canceled. No payment was made. You can try again anytime.'}
+            </span>
+            <button
+              type="button"
+              onClick={() => setCheckoutStatus(null)}
+              className="text-xs underline cursor-pointer shrink-0"
+            >
+              Dismiss
+            </button>
+          </div>
+        )}
+
         {/* Tab Views */}
         {activeTab === 'advisor' && (
           <AdvocateChat onSaveToAuditLog={handleSaveDraftToAuditLog} />
@@ -174,7 +210,7 @@ export default function App() {
         )}
 
         {activeTab === 'support' && (
-          <SupportParentShield onNavigateToTab={setActiveTab} />
+          <SupportParentShield onNavigateToTab={setActiveTab} checkoutStatus={checkoutStatus} />
         )}
 
         {/* Legal Authorities Always Accessible */}

@@ -4,6 +4,7 @@ import fs from "fs";
 import { createServer as createViteServer } from "vite";
 import dotenv from "dotenv";
 import { GoogleGenAI } from "@google/genai";
+import Stripe from "stripe";
 
 dotenv.config();
 
@@ -79,6 +80,72 @@ app.get("/api/health", (req, res) => {
     hasApiKey: !!process.env.GEMINI_API_KEY,
     service: "ParentShield Texas DFPS Case Buffer",
   });
+});
+
+// ---------------------------------------------------------------------------
+// Stripe Checkout (one-time support tiers)
+// Server-only secret: STRIPE_SECRET_KEY. Price IDs come from STRIPE_PRICE_* env vars.
+// The client sends only a tier name; it never supplies a price ID or amount.
+// ---------------------------------------------------------------------------
+let stripeClient: Stripe | null = null;
+function getStripe(): Stripe | null {
+  const key = process.env.STRIPE_SECRET_KEY;
+  if (!key) return null;
+  if (!stripeClient) {
+    stripeClient = new Stripe(key);
+  }
+  return stripeClient;
+}
+
+const STRIPE_TIER_PRICE_ENV: Record<string, string> = {
+  together: "STRIPE_PRICE_TOGETHER",
+  defender: "STRIPE_PRICE_DEFENDER",
+  protector: "STRIPE_PRICE_PROTECTOR",
+  shield: "STRIPE_PRICE_SHIELD",
+  guardian: "STRIPE_PRICE_GUARDIAN",
+};
+
+app.post("/api/create-checkout-session", async (req, res) => {
+  const stripe = getStripe();
+  if (!stripe) {
+    res.status(503).json({ error: "Payments are not configured (STRIPE_SECRET_KEY is missing)." });
+    return;
+  }
+
+  const tier = typeof req.body?.tier === "string" ? req.body.tier.trim().toLowerCase() : "";
+  if (!Object.prototype.hasOwnProperty.call(STRIPE_TIER_PRICE_ENV, tier)) {
+    res.status(400).json({ error: "Unknown support tier." });
+    return;
+  }
+
+  const price = process.env[STRIPE_TIER_PRICE_ENV[tier]];
+  if (!price) {
+    res.status(503).json({ error: `Payments are not configured for this tier (${STRIPE_TIER_PRICE_ENV[tier]} is missing).` });
+    return;
+  }
+
+  const base = (process.env.APP_URL || `http://localhost:${PORT}`).replace(/\/+$/, "");
+
+  try {
+    const session = await stripe.checkout.sessions.create({
+      mode: "payment",
+      line_items: [{ price, quantity: 1 }],
+      billing_address_collection: "auto",
+      phone_number_collection: { enabled: false },
+      automatic_tax: { enabled: false },
+      allow_promotion_codes: false,
+      submit_type: "auto",
+      ui_mode: "hosted_page",
+      integration_identifier: "hosted_web_0002",
+      origin_context: "web",
+      success_url: `${base}/?checkout=success&session_id={CHECKOUT_SESSION_ID}`,
+      cancel_url: `${base}/?checkout=cancel`,
+    });
+    res.json({ url: session.url });
+  } catch (error: any) {
+    console.error("Error creating Stripe Checkout Session:", error?.type, error?.code, error?.message);
+    res.status(500).json({ error: "Could not start checkout. Please try again." });
+  }
 });
 
 // Case Review Endpoint
